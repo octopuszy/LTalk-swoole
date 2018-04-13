@@ -1,0 +1,4 @@
+18-04-13 14:22:54:Exception at file[/home/www/LTalk/EasySwooleEvent.php] line[36] message:[Call to undefined method EasySwoole\Core\Component\Di::sets()]
+18-04-13 14:22:58:Error at file[/home/www/LTalk/App/HttpController/Api/Login.php] line[30] message:[Undefined variable: request]
+18-04-13 14:23:38:Exception at file[/home/www/LTalk/EasySwooleEvent.php] line[36] message:[Call to undefined method EasySwoole\Core\Component\Di::sets()]
+18-04-13 14:25:00:Exception at file[/home/www/LTalk/EasySwooleEvent.php] line[36] message:[Call to undefined method EasySwoole\Core\Component\Di::sets()]

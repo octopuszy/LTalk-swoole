@@ -1,0 +1,14 @@
+{
+    "name": "easyswoole/LTalk",
+    "require": {
+        "easyswoole/easyswoole": "2.x-dev",
+        "joshcam/mysqli-database-class": "dev-master",
+        "easyswoole/swoole-ide-helper": "1.*",
+        "topthink/think-orm": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    }
+}
