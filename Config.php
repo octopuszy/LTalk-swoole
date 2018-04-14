@@ -44,6 +44,21 @@ return [
         'PASSWORD'=>'123',
         'DB_NAME'=>'LTalk'
     ],
+
+    'REDIS' => [
+        'host' => '127.0.0.1', // redis主机地址
+        'port' => 6379, // 端口
+        'serialize' => false, // 是否序列化php变量
+        'auth' => null, // 密码
+        'pool' => [
+            'min' => 5, // 最小连接数
+            'max' => 100 // 最大连接数
+        ],
+        'errorHandler' => function(){
+            return null;
+        }
+    ],
+
     'database' => [
         // 数据库类型
         'type'            => 'mysql',
@@ -61,5 +76,9 @@ return [
         'prefix'          => '',
         // 是否需要断线重连
         'break_reconnect' => true,
+    ],
+
+    'setting' => [
+        'token_salt' => 'gye76qwei23eq'
     ]
 ];

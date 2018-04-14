@@ -1,4 +1,40 @@
-18-04-13 14:22:54:Exception at file[/home/www/LTalk/EasySwooleEvent.php] line[36] message:[Call to undefined method EasySwoole\Core\Component\Di::sets()]
-18-04-13 14:22:58:Error at file[/home/www/LTalk/App/HttpController/Api/Login.php] line[30] message:[Undefined variable: request]
-18-04-13 14:23:38:Exception at file[/home/www/LTalk/EasySwooleEvent.php] line[36] message:[Call to undefined method EasySwoole\Core\Component\Di::sets()]
-18-04-13 14:25:00:Exception at file[/home/www/LTalk/EasySwooleEvent.php] line[36] message:[Call to undefined method EasySwoole\Core\Component\Di::sets()]
+18-04-14 10:24:43:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[18] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#5 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#6 {main}
+  thrown]
+18-04-14 10:45:14:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[18] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#5 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#6 {main}
+  thrown]
+18-04-14 10:48:24:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[18] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#5 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#6 {main}
+  thrown]
+18-04-14 10:50:36:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[18] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#5 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#6 {main}
+  thrown]

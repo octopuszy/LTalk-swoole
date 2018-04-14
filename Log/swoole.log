@@ -1,0 +1,24 @@
+[2018-04-14 10:24:43 ^29331.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
+[2018-04-14 10:24:43 $29329.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+[2018-04-14 10:45:14 ^30255.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
+[2018-04-14 10:45:14 $30253.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+[2018-04-14 10:48:24 ^30402.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
+[2018-04-14 10:48:24 $30400.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+[2018-04-14 10:50:36 ^30532.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
+[2018-04-14 10:50:36 $30530.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0

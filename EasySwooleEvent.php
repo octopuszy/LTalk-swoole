@@ -3,6 +3,7 @@
 namespace EasySwoole;
 
 use App\Sock\Parser\WebSock;
+use App\Utility\RedisPool;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
 use EasySwoole\Core\Component\Di;
 use \EasySwoole\Core\Component\Logger;
@@ -49,6 +50,9 @@ Class EasySwooleEvent implements EventInterface
      */
     static public function mainServerCreate(ServerManager $server, EventRegister $register): void
     {
+        if (version_compare(phpversion('swoole'), '2.1.0', '>=')) {
+            PoolManager::getInstance()->addPool(RedisPool::class, 3, 10);
+        }
         EventHelper::registerDefaultOnMessage($register, new WebSock());
     }
 

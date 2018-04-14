@@ -15,7 +15,6 @@ use EasySwoole\Core\Socket\Common\CommandBean;
 
 class WebSock implements ParserInterface
 {
-
     public function decode($raw, $client)
     {
         // TODO: Implement decode() method.

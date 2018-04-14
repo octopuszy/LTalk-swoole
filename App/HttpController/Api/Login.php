@@ -9,11 +9,16 @@
 namespace App\HttpController\Api;
 
 
+use App\Exception\LoginException;
 use App\Exception\ParameterException;
 use App\Exception\RegisterException;
+use App\HttpController\Common;
 use App\Model\User as UserModel;
+use App\Task\Task;
+use App\Validate\LoginValidate;
 use App\Validate\RegisterValidate;
 use EasySwoole\Core\Http\AbstractInterface\Controller;
+use EasySwoole\Core\Swoole\Task\TaskManager;
 
 class Login extends Controller
 {
@@ -65,7 +70,52 @@ class Login extends Controller
      * 返回 token
      */
     public function login(){
-        
+        (new LoginValidate())->goCheck($this->request());
+        $email = $this->request()->getRequestParam('email');
+        $password = $this->request()->getRequestParam('password');
+
+        // 查询用户是否已经存在
+        $user = UserModel::getUser(['email'=>$email]);
+        if(empty($user)){
+            throw new LoginException([
+                'msg'=>'无效账号',
+                'errorCode'=>30001
+            ]);
+        }
+
+        // 比较密码是否一致
+        if (strcmp(md5($password),$user['password'])){
+            throw new LoginException([
+                'msg'=>'密码错误',
+                'errorCode'=>30002
+            ]);
+        }
+
+        // 准备存入缓存的信息
+        $cache_value = $this->cacheValue($user);
+
+        // 生成 token
+        $token = Common::getRandChar(16);
+
+        // 异步存入缓存
+        $taskData = [
+            'method' => 'RedisSetDatas',
+            'data'  => [
+                $token => $cache_value
+            ]
+        ];
+        $taskClass = new Task($taskData);
+        TaskManager::async($taskClass);
+
+        // 返回 token
+        $this->writeJson(200, $token);
     }
+
+    // 存入缓存的个人信息，方便扩展
+    private function cacheValue($user){
+        $val['user'] = $user;
+        return $val;
+    }
+
 
 }
