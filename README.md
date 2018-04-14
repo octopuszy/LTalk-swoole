@@ -1,46 +1,43 @@
-# demo
-克隆该项目后，请先执行
-- composer install
-- 安装easySwoole（安装easyswoole教程请看文档）
+# Ltalk
+### 本项目v1版本有以下功能：
+- [x] 登录 
+- [x] 注册
+- [ ] 添加/删除好友
+- [ ] 好友即时聊天
+- [ ] 添加/退出群组
+- [ ] 群组及时聊天
+- [ ] 世界聊天模块（所有在线人员）
 
-## 使用前准备
-若测试数据库部分，请确保数修改好数据库配置，并存在以下表
-```
-CREATE TABLE `user_list` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
-  `account` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `session` varchar(45) DEFAULT NULL,
-  `addTime` int(11) NOT NULL,
-  PRIMARY KEY (`userId`),
-  UNIQUE KEY `userId_UNIQUE` (`userId`),
-  UNIQUE KEY `account_UNIQUE` (`account`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
+### v2 或以后版本会完善
+- 离线接受好友请求
+- 存储聊天记录
+- 查看历史聊天记录
 
-## DEMO内容
-- URL与控制器关系
-- 自定义路由
-- 异步任务投递
-- 数据库与model使用
-- Es的Validate使用
-- 系统事件注册
-- 定时器添加
-- 自定义进程使用
-- 自带跨进程Cache使用
-- inotify监控应用实现自动重启
-- webSocket控制器基础使用例子（包含连接验证）
-- tcp控制器基础使用（测试方法请看文档的sock tcp章节）
-- 控制器异常处理
-- 同步mysql/协程mysql对象池
+## 标准与规范
+1. 本项目采用api接口形式，接收与返回数据
+2. 尽可能遵循 restful 规范标准
+3. 前后端分离
+4. 自定义全局异常处理类与验证层，保证输入输出的规范性
 
-## 其他
-- [项目主仓库](https://github.com/easy-swoole/easyswoole)
-- [项目官网](https://www.easyswoole.com/)
-- 官方QQ交流群 : **633921431**
+## 目录结构
 
-- [捐赠](https://www.easyswoole.com/Manual/2.x/Cn/_book/donate.html)
-    您的捐赠是对Swoole项目开发组最大的鼓励和支持。我们会坚持开发维护下去。 您的捐赠将被用于:
-        
-  - 持续和深入地开发
-  - 文档和社区的建设和维护
+目录结构如下：
+
+~~~
+LTalk  WEB部署目录
+├─app          				应用目录
+│  ├─Exception             	自定义异常
+│  ├─HttpController        	HttpApi 控制器目录
+│  │  ├─Common.php      	公共方法
+│  │  └─Router.php      	自定义路由
+│  │
+│  ├─Model        			tp orm 
+│  ├─Service         		服务层
+│  ├─Sock           		websocket 输入输出规范配置
+│  ├─Task           		异步Task方法模块
+│  ├─Utility           		进程池
+│  ├─Validate           	自定义验证层模块
+│  └─WebsocketController    Websocket Api 控制器目录
+...
+(其他为 easyswoole 框架自带)
+~~~
