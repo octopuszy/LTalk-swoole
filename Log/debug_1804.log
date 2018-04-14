@@ -38,3 +38,52 @@ Stack trace:
 #5 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
 #6 {main}
   thrown]
+18-04-14 12:21:28:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php] line[119] message:[Uncaught Swoole\Exception: failed to listen server port[0.0.0.0:9501]. Error: Address already in use[98]. in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php:119
+Stack trace:
+#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(119): Swoole\Server->__construct('0.0.0.0', 9501, 3, 1)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(61): EasySwoole\Core\Swoole\ServerManager->createMainServer()
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php(45): EasySwoole\Core\Swoole\ServerManager->start()
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(320): EasySwoole\Core\Core->run()
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(22): serverStart(Array)
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(456): commandHandler()
+#6 /home/www/LTalk/easyswoole(2): require('/home/www/LTalk...')
+#7 {main}
+  thrown]
+18-04-14 12:21:55:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php] line[119] message:[Uncaught Swoole\Exception: failed to listen server port[0.0.0.0:9501]. Error: Address already in use[98]. in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php:119
+Stack trace:
+#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(119): Swoole\Server->__construct('0.0.0.0', 9501, 3, 1)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(61): EasySwoole\Core\Swoole\ServerManager->createMainServer()
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php(45): EasySwoole\Core\Swoole\ServerManager->start()
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(320): EasySwoole\Core\Core->run()
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(22): serverStart(Array)
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(456): commandHandler()
+#6 /home/www/LTalk/easyswoole(2): require('/home/www/LTalk...')
+#7 {main}
+  thrown]
+18-04-14 12:23:17:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php] line[119] message:[Uncaught Swoole\Exception: failed to listen server port[0.0.0.0:9501]. Error: Address already in use[98]. in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php:119
+Stack trace:
+#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(119): Swoole\Server->__construct('0.0.0.0', 9501, 3, 1)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(61): EasySwoole\Core\Swoole\ServerManager->createMainServer()
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php(45): EasySwoole\Core\Swoole\ServerManager->start()
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(320): EasySwoole\Core\Core->run()
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(22): serverStart(Array)
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/bin/easyswoole(456): commandHandler()
+#6 /home/www/LTalk/easyswoole(2): require('/home/www/LTalk...')
+#7 {main}
+  thrown]
+18-04-14 12:30:22:Error at file[/home/www/LTalk/App/HttpController/Api/Login.php] line[101] message:[Undefined variable: pool]
+18-04-14 12:32:26:Error at file[/home/www/LTalk/App/HttpController/Api/Login.php] line[101] message:[Undefined variable: pool]
+18-04-14 12:33:14:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[18] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+Stack trace:
+#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#5 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#6 {main}
+  thrown]
+18-04-14 12:55:24:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[29] message:[Undefined index: data]
+18-04-14 12:55:24:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[29] message:[Invalid argument supplied for foreach()]
+18-04-14 15:27:18:Error at file[/home/www/LTalk/App/HttpController/Api/Login.php] line[58] message:[Non-static method App\HttpController\Common::generate_code() should not be called statically]
+18-04-14 15:46:47:Error at file[/home/www/LTalk/App/WebsocketController/Test.php] line[26] message:[Array to string conversion]

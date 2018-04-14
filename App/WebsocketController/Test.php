@@ -1,25 +1,25 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: yf
- * Date: 2018/3/6
- * Time: 下午2:54
+ * User: yuzhang
+ * Date: 2018/4/14
+ * Time: 下午2:27
  */
 
-namespace App\Sock\Controller;
-
+namespace App\WebsocketController;
 
 use EasySwoole\Core\Socket\Response;
 use EasySwoole\Core\Socket\AbstractInterface\WebSocketController;
 use EasySwoole\Core\Swoole\ServerManager;
 use EasySwoole\Core\Swoole\Task\TaskManager;
 
-class Web extends WebSocketController
+class Test extends WebSocketController
 {
     function actionNotFound(?string $actionName)
     {
         $this->response()->write("action call {$actionName} not found");
     }
+
 
     function hello()
     {

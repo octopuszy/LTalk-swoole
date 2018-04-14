@@ -14,10 +14,13 @@ use App\Exception\ParameterException;
 use App\Exception\RegisterException;
 use App\HttpController\Common;
 use App\Model\User as UserModel;
+use App\Service\LoginService;
+use App\Service\RedisPoolService;
 use App\Task\Task;
 use App\Validate\LoginValidate;
 use App\Validate\RegisterValidate;
 use EasySwoole\Core\Http\AbstractInterface\Controller;
+use EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use EasySwoole\Core\Swoole\Task\TaskManager;
 
 class Login extends Controller
@@ -33,6 +36,7 @@ class Login extends Controller
         // 验证
         (new RegisterValidate())->goCheck($this->request());
         $email = $this->request()->getRequestParam('email');
+        $nickname = $this->request()->getRequestParam('nickname');
         $password = $this->request()->getRequestParam('password');
         $repassword = $this->request()->getRequestParam('repassword');
 
@@ -50,10 +54,18 @@ class Login extends Controller
             ]);
         }
 
+        // 生成唯一 LTalk number
+        $number = Common::generate_code();
+        while ( UserModel::getUser(['number'=>$number]) ){
+            $number = Common::getRandChar();
+        }
+
         // 入库
         $data = [
             'email' => $email,
-            'password' => md5($password)
+            'password' => md5($password),
+            'nickname' => $nickname,
+            'number' => $number
         ];
         try{
             UserModel::newUser($data);
@@ -83,6 +95,15 @@ class Login extends Controller
             ]);
         }
 
+        // 查看用户是否已登录
+        $isLogin = LoginService::isLogin($user['number']);
+        if($isLogin){
+            throw new LoginException([
+                'msg'=>'用户已登录',
+                'errorCode'=>30003
+            ]);
+        }
+
         // 比较密码是否一致
         if (strcmp(md5($password),$user['password'])){
             throw new LoginException([
@@ -91,30 +112,20 @@ class Login extends Controller
             ]);
         }
 
-        // 准备存入缓存的信息
-        $cache_value = $this->cacheValue($user);
-
+        // 更新登录时间
+        $update = [
+            'last_login' => time()
+        ];
+        UserModel::updateUser($user['id'], $update);
         // 生成 token
         $token = Common::getRandChar(16);
 
-        // 异步存入缓存
-        $taskData = [
-            'method' => 'RedisSetDatas',
-            'data'  => [
-                $token => $cache_value
-            ]
-        ];
-        $taskClass = new Task($taskData);
-        TaskManager::async($taskClass);
+        // 将用户信息存入缓存
+        $login_ser = new LoginService($token, $user);
+        $login_ser->saveCache();
 
         // 返回 token
         $this->writeJson(200, $token);
-    }
-
-    // 存入缓存的个人信息，方便扩展
-    private function cacheValue($user){
-        $val['user'] = $user;
-        return $val;
     }
 
 

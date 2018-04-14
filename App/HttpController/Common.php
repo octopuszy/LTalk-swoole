@@ -19,7 +19,11 @@ class Common
         for ($i=0;$i<$length;$i++){
             $str .= $strPol[rand(0,$max)];
         }
-
         return $str;
+    }
+
+    // 生成 n 位随机数
+    public static function generate_code($length = 6) {
+        return rand(pow(10,($length-1)), pow(10,$length)-1);
     }
 }

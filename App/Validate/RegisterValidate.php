@@ -20,6 +20,7 @@ class RegisterValidate extends BaseValidate
     {
         $rule = new Rules();
         $rule->add('email','邮箱必填')->withRule(Validate::REQUIRED);
+        $rule->add('nickname','昵称必填，长度不得超过10字符')->withRule(Validate::REQUIRED)->withRule(Validate::MAX_LEN,10);
         $rule->add('password','密码必填，长度在6-16字符之间')->withRule(Validate::REQUIRED)
             ->withRule(Validate::MIN_LEN,6)
             ->withRule(Validate::MAX_LEN,16);

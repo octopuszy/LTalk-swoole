@@ -8,8 +8,7 @@
 
 namespace App\Sock\Parser;
 
-
-use App\Sock\Controller\Web;
+use EasySwoole\Config;
 use EasySwoole\Core\Socket\AbstractInterface\ParserInterface;
 use EasySwoole\Core\Socket\Common\CommandBean;
 
@@ -17,10 +16,10 @@ class WebSock implements ParserInterface
 {
     public function decode($raw, $client)
     {
-        // TODO: Implement decode() method.
         $command = new CommandBean();
         $json = json_decode($raw,1);
-        $command->setControllerClass(Web::class);
+        $controller_path = Config::getInstance()->getConf('setting.WebSocketControllerPath');
+        $command->setControllerClass($controller_path.$json['controller']);
         $command->setAction($json['action']);
         $command->setArg('content',$json['content']);
         return $command;
@@ -28,12 +27,15 @@ class WebSock implements ParserInterface
 
     public function encode(string $raw, $client, $commandBean): ?string
     {
-        // TODO: Implement encode() method.
         /*
          * 注意，return ''与return null不一样，空字符串一样会回复给客户端，比如在服务端主动心跳测试的场景
          */
         if(strlen($raw) == 0){
-            return null;
+            $data = [
+                'code' => 500,
+                'msg' => '未知错误'
+            ];
+            return json_encode($data);
         }
         return $raw;
     }

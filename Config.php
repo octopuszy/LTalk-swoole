@@ -79,6 +79,7 @@ return [
     ],
 
     'setting' => [
-        'token_salt' => 'gye76qwei23eq'
+        'token_salt' => 'gye76qwei23eq',
+        'WebSocketControllerPath' => 'App\WebsocketController\\',
     ]
 ];

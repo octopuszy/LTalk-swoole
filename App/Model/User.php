@@ -26,4 +26,12 @@ class User extends Model
         }
         return $user->save();
     }
+
+    public static function updateUser($id,$data){
+        $user = self::get($id);
+        foreach ($data as $key => $val){
+            $user->$key = $val;
+        }
+        return $user->save();
+    }
 }
