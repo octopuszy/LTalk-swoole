@@ -12,13 +12,18 @@ namespace App\WebsocketController;
 
 class Friend extends BaseWs
 {
-    function actionNotFound(?string $actionName)
-    {
-        $this->response()->write("action call {$actionName} not found");
+    /*
+     * 发送好友请求
+     *
+     */
+    function sendReq(){
+        $content = $this->request()->getArg('content');
     }
 
-    function test(){
-        $this->response()->write("hello");
-    }
+    /*
+     * 处理好友请求
+     */
+    function doReq(){
 
+    }
 }

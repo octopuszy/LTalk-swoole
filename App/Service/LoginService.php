@@ -27,43 +27,8 @@ class LoginService
      * 2. uid => token
      */
     public function saveCache(){
-        $this->saveTokenToUser();
-        $this->saveUidToToken();
+        UserCacheService::saveNumToToken($this->user['number'], $this->token);
+        UserCacheService::saveTokenToUser($this->token, $this->user);
     }
 
-    /*
-     * token => userInfo
-     */
-    private function saveTokenToUser(){
-        $key = "user:getUser:".$this->token;
-        $data = [
-            $key => $this->user,
-        ];
-        $redis_pool = RedisPoolService::getRedisPool();
-        $redis_pool->setDate($data);
-    }
-
-    /*
-     * uid => token
-     */
-    private function saveUidToToken(){
-        $key = "user:getToken:".$this->user['number'];
-        $data = [
-            $key => $this->token,
-        ];
-        $redis_pool = RedisPoolService::getRedisPool();
-        $redis_pool->setDate($data);
-    }
-
-    public static function isLogin($number){
-        $key = "user:getToken:".$number;
-        $redis_pool = RedisPoolService::getRedisPool();
-        return $redis_pool->getDate($key);
-    }
-
-    public static function issetToken($token){
-        $key = "user:getUser:".$token;
-        $redis_pool = RedisPoolService::getRedisPool();
-        return $redis_pool->getDate($key);
-    }
 }

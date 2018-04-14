@@ -16,6 +16,7 @@ use App\HttpController\Common;
 use App\Model\User as UserModel;
 use App\Service\LoginService;
 use App\Service\RedisPoolService;
+use App\Service\UserCacheService;
 use App\Task\Task;
 use App\Validate\LoginValidate;
 use App\Validate\RegisterValidate;
@@ -96,7 +97,7 @@ class Login extends Controller
         }
 
         // 查看用户是否已登录
-        $isLogin = LoginService::isLogin($user['number']);
+        $isLogin = UserCacheService::getTokenByNum($user['number']);
         if($isLogin){
             throw new LoginException([
                 'msg'=>'用户已登录',

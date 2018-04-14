@@ -9,11 +9,22 @@
 namespace App\WebsocketController;
 
 
+use App\Exception\Websocket\WsException;
 use App\Service\LoginService;
+use App\Service\UserCacheService;
 use EasySwoole\Core\Socket\AbstractInterface\WebSocketController;
 
 class BaseWs extends WebSocketController
 {
+    function actionNotFound(?string $actionName)
+    {
+        $data = (new WsException([
+            'msg' => '请求方法不存在',
+            'errorCode' => 60001
+        ]))->getMsg();
+        $this->response()->write(json_encode($data));
+    }
+
     // 验证 token
     protected function onRequest(?string $actionName): bool
     {
@@ -21,9 +32,10 @@ class BaseWs extends WebSocketController
         if(!isset($content['token'])){
             return false;
         }
-        if(!LoginService::issetToken($content['token'])){
+        if(!UserCacheService::getUserByToken($content['token'])){
             return false;
         }
+
         return true;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace EasySwoole;
 
+use App\Service\LoginService;
 use App\Sock\Parser\WebSock;
 use App\Utility\RedisPool;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
