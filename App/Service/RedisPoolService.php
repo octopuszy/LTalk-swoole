@@ -34,17 +34,97 @@ class RedisPoolService
 
 
 
-    public function setDate($data){
-        foreach ($data as $key => $val){
-            if(is_array($val)){
-                $val = json_encode($val);
-            }
-            $res = $this->pool_obj->exec('set', $key, $val);
+    public function set($key, $value){
+        if(is_array($value)){
+            $value = json_encode($value);
         }
+        return $this->pool_obj->exec('set', $key, $value);
     }
 
-    public function getDate($key){
+    public function get($key){
         $res = $this->pool_obj->exec('get', $key);
+        return $res;
+    }
+
+    /*
+     * 添加一个集合成员
+     */
+    public function sAdd($key, $value = []){
+        $res = $this->pool_obj->exec('sAdd', $key, $value);
+        return $res;
+    }
+
+    /*
+     * 获取集合的成员数
+     */
+    public function sCard($key){
+        $res = $this->pool_obj->exec('sCard', $key);
+        return $res;
+    }
+
+    /*
+     * 删除一个集合成员
+     */
+    public function sRem($key){
+        $res = $this->pool_obj->exec('sRem', $key);
+        return $res;
+    }
+
+    /*
+     * 获取集合的所有成员
+     */
+    public function sMembers($key){
+        $res = $this->pool_obj->exec('sMembers', $key);
+        return $res;
+    }
+
+    /*
+     * hash
+     */
+    public function hMset($key, $hashArr){
+        $res = $this->pool_obj->exec('hMset', $key, $hashArr);
+        return $res;
+    }
+
+    public function hSet($key, $hashKey, $value){
+        $res = $this->pool_obj->exec('hSet', $key, $hashKey, $value);
+        return $res;
+    }
+
+    public function hGet($key, $hashKey){
+        $res = $this->pool_obj->exec('hGet', $key, $hashKey);
+        return $res;
+    }
+
+    public function hGetAll($key){
+        $res = $this->pool_obj->exec('hGetAll', $key);
+        $flag = 1;
+        $data = [];
+        $tmp = [];
+        foreach ($res as $key => $val){
+            if($flag%2==0){
+                $tmp_key = array_pop($tmp);
+                $data[$tmp_key] = $val;
+            }else{
+                array_push($tmp,$val);
+            }
+            $flag+=1;
+        }
+        return $data;
+    }
+
+    public function hKeys($key){
+        $res = $this->pool_obj->exec('hKeys', $key);
+        return $res;
+    }
+
+    public function hDel($key, $hashKey){
+        $res = $this->pool_obj->exec('hDel', $key,$hashKey);
+        return $res;
+    }
+
+    public function del($key){
+        $res = $this->pool_obj->exec('del', $key);
         return $res;
     }
 

@@ -58,7 +58,7 @@ class Login extends Controller
         // 生成唯一 LTalk number
         $number = Common::generate_code();
         while ( UserModel::getUser(['number'=>$number]) ){
-            $number = Common::getRandChar();
+            $number = Common::generate_code();
         }
 
         // 入库

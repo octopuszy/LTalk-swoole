@@ -9,8 +9,9 @@
 namespace App\WebsocketController;
 
 
+use App\Exception\Websocket\FriendException;
 use App\Exception\Websocket\WsException;
-use App\Service\LoginService;
+use App\Model\User as UserModel;
 use App\Service\UserCacheService;
 use EasySwoole\Core\Socket\AbstractInterface\WebSocketController;
 
@@ -32,10 +33,71 @@ class BaseWs extends WebSocketController
         if(!isset($content['token'])){
             return false;
         }
-        if(!UserCacheService::getUserByToken($content['token'])){
+        if(!UserCacheService::getNumByToken($content['token'])){
             return false;
         }
+        return true;
+    }
 
+    /*
+     * 获取当前用户的信息
+     */
+    protected function getUserInfo(){
+        $content = $this->request()->getArg('content');
+        $token = $content['token'];
+        $fd = $this->client()->getFd();
+        $user = UserCacheService::getUserByToken($token);
+
+        $data = [
+            'token' => $content['token'],
+            'fd'    => $fd,
+            'user'  => $user
+        ];
+
+        return $data;
+    }
+
+    /*
+     * 向用户发送格式化后的消息
+     */
+    protected function sendMsg($params =[]){
+        $data = [
+            'type'      => 'ws',
+            'method'    => '',
+            'data'      => 'ok'
+        ];
+        if(array_key_exists('type',$params)){
+            $data['type'] = $params['type'];
+        }
+        if(array_key_exists('method',$params)){
+            $data['method'] = $params['method'];
+        }
+        if(array_key_exists('data',$params)){
+            $data['data'] = $params['data'];
+        }
+        $this->response()->write(json_encode($data));
+    }
+
+    /*
+     * 通过 number 验证用户是否在线，以及是否存在
+     */
+    protected function onlineValidate($number){
+        $ishas = UserModel::getUser(['number'=>$number]);
+        if(!$ishas){
+            $data = (new FriendException([
+                'msg' => '用户不存在',
+                'errorCode' => 40002
+            ]))->getMsg();
+            return $data;
+        }
+        $fd = UserCacheService::getFdByNum($number);
+        if(!$fd){
+            $data = (new FriendException([
+                'msg' => '用户暂时不在线',
+                'errorCode' => 40001
+            ]))->getMsg();
+            return $data;
+        }
         return true;
     }
 }

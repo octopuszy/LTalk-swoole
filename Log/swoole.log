@@ -34,3 +34,18 @@ Stack trace:
 #1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
 #2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
 [2018-04-14 12:33:14 $2913.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+[2018-04-15 14:32:01 *3366.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-15 14:32:01 *3365.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-15 14:32:01 $3361.0]	WARNING	swSignal_callback: signal[1] callback is null.
+[2018-04-15 14:32:01 $3361.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
+[2018-04-15 14:32:01 $3361.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
+[2018-04-15 14:32:01 $3361.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
+[2018-04-15 14:32:01 #3360.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-15 16:10:07 #3360.1]	NOTICE	Server is shutdown now.
+[2018-04-15 16:13:03 ^14409.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to undefined method App\Task\DoTask::SendFriendReq() in /home/www/LTalk/App/Task/Task.php:25
+Stack trace:
+#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 1)
+#1 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 1, Object(App\Task\Task))
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Componen
+[2018-04-15 16:13:03 $14407.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+[2018-04-15 19:37:53 #16660.1]	NOTICE	Server is shutdown now.

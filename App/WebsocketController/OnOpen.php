@@ -22,13 +22,25 @@ class OnOpen extends BaseWs
      * 4. 向所有群聊发送上线提醒
      */
     public function init(){
-        $this->saveCache();
+        $user = $this->getUserInfo();
+
+        //初始化所有相关缓存
+        $this->saveCache($user);
+
+        // 查出所有好友，查所有好友的在线状态，向所有好友发送异步上线提醒
+        $this->sendOnlineMsg();
+        $this->sendMsg();
     }
 
-    private function saveCache(){
-        $content = $this->request()->getArg('content');
-        $token = $content['token'];
-        $fd = $this->client()->getFd();
+    private function saveCache($user){
+        // 更新用户在线状态缓存（ 添加 fd 字段 ）
+        UserCacheService::saveNumToFd($user['user']['number'], $user['fd']);
+
+        // 添加 fd 与 token 关联缓存，close 时可以销毁 fd 相关缓存
+        UserCacheService::saveTokenByFd($user['fd'], $user['token']);
+    }
+
+    private function sendOnlineMsg(){
 
     }
 }

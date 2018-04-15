@@ -105,3 +105,52 @@ Stack trace:
 #6 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(56): EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), Object(Swoole\WebSocket\Frame))
 #7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
 #8 {main}]
+18-04-15 10:09:55:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::hMSet() expects parameter 2 to be array, object given]
+18-04-15 11:29:43:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php] line[109] message:[#0 /home/www/LTalk/App/WebsocketController/Friend.php(27): App\WebsocketController\BaseWs->getUserInfo()
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(79): App\WebsocketController\Friend->sendReq()
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(26): EasySwoole\Core\Socket\AbstractInterface\Controller->__hook('sendReq')
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/WebSocketController.php(21): EasySwoole\Core\Socket\AbstractInterface\Controller->__construct(Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php(101): EasySwoole\Core\Socket\AbstractInterface\WebSocketController->__construct(Object(EasySwoole\Core\Socket\Client\WebSocket), Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(127): EasySwoole\Core\Socket\Dispatcher->dispatch(2, '{"controller":"...', Object(Swoole\WebSocket\Frame))
+#6 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(56): EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), Object(Swoole\WebSocket\Frame))
+#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#8 {main}]
+18-04-15 11:29:56:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php] line[109] message:[#0 /home/www/LTalk/App/WebsocketController/Friend.php(27): App\WebsocketController\BaseWs->getUserInfo()
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(79): App\WebsocketController\Friend->sendReq()
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(26): EasySwoole\Core\Socket\AbstractInterface\Controller->__hook('sendReq')
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/WebSocketController.php(21): EasySwoole\Core\Socket\AbstractInterface\Controller->__construct(Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php(101): EasySwoole\Core\Socket\AbstractInterface\WebSocketController->__construct(Object(EasySwoole\Core\Socket\Client\WebSocket), Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(127): EasySwoole\Core\Socket\Dispatcher->dispatch(2, '{"controller":"...', Object(Swoole\WebSocket\Frame))
+#6 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(56): EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), Object(Swoole\WebSocket\Frame))
+#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#8 {main}]
+18-04-15 16:13:03:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[32] message:[Undefined index: number]
+18-04-15 16:13:03:Error at file[/home/www/LTalk/App/Task/Task.php] line[25] message:[Uncaught Error: Call to undefined method App\Task\DoTask::SendFriendReq() in /home/www/LTalk/App/Task/Task.php:25
+Stack trace:
+#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 1)
+#1 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 1, Object(App\Task\Task))
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#4 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 1, Object(App\Task\Task))
+#5 {main}
+  thrown]
+18-04-15 16:41:54:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[33] message:[Undefined index: number]
+18-04-15 16:41:54:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Array to string conversion]
+18-04-15 16:41:54:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Swoole\WebSocket\Server::push(): the connected client of connection[2] is not a websocket client.]
+18-04-15 16:46:00:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[36] message:[Undefined index: number]
+18-04-15 16:46:00:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Array to string conversion]
+18-04-15 16:46:00:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Swoole\WebSocket\Server::push(): the connected client of connection[2] is not a websocket client.]
+18-04-15 16:50:22:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[38] message:[Undefined index: number]
+18-04-15 16:50:22:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Array to string conversion]
+18-04-15 16:51:28:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[36] message:[Undefined index: number]
+18-04-15 16:51:28:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Array to string conversion]
+18-04-15 16:51:54:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[38] message:[Undefined index: number]
+18-04-15 16:51:54:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Array to string conversion]
+18-04-15 16:54:05:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[23] message:[Array to string conversion]
+18-04-15 19:39:13:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[92] message:[Undefined index: id]
+18-04-15 19:42:28:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[93] message:[Undefined index: id]
+18-04-15 19:43:18:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
+18-04-15 19:43:18:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[93] message:[Undefined index: id]
+18-04-15 19:43:30:Error at file[/home/www/LTalk/App/WebsocketController/Friend.php] line[93] message:[Undefined index: id]
+18-04-15 19:56:42:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
+18-04-15 20:25:55:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
