@@ -19,4 +19,10 @@ class DoTask
         return $server->push($fd,json_encode($res));
     }
 
+    public static function saveMysql($data){
+        $model = new $data['class'];
+        $method = $data['method'];
+        $model::$method($data['data']);
+    }
+
 }

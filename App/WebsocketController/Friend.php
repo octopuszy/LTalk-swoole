@@ -23,7 +23,7 @@ class Friend extends BaseWs
      * 1. 查看当前用户是存在/是否在线
      * 2. 发送好友请求
      */
-    function sendReq(){
+    public function sendReq(){
         $content = $this->request()->getArg('content');
         $user = $this->getUserInfo();
         $to_number = $content['number'];
@@ -34,8 +34,8 @@ class Friend extends BaseWs
         }
 
         // 查二者是否已经是好友
-        $ids = FriendModel::getAllFriends($user['user']['id']);
-        if(in_array($to_user['id'], $ids)){
+        $isFriend = FriendService::checkIsFriend($user['user']['id'], $to_user['user']['id']);
+        if($isFriend){
             $err = (new FriendException([
                 'msg' => '不可重复添加好友',
                 'errorCode' => 40004
@@ -74,7 +74,7 @@ class Friend extends BaseWs
      * @param number 对方号码
      * @param res    是否同意，1同意，0不同意
      */
-    function doReq(){
+    public function doReq(){
         $content = $this->request()->getArg('content');
         $from_number = $content['number'];
         $check = $content['check'];
@@ -109,10 +109,13 @@ class Friend extends BaseWs
     /*
      * 获取好友列表
      */
-    function getFriends(){
+    public function getFriends(){
         $user = $this->getUserInfo();
         $friends = FriendModel::getAllFriends($user['user']['id']);
         $data = FriendService::getFriends($friends);
         $this->sendMsg(['data'=>$data]);
     }
+
+
+
 }

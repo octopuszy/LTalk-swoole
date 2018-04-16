@@ -9,10 +9,12 @@
 namespace App\Service;
 
 
+use App\Exception\Websocket\FriendException;
 use App\Model\User as UserModel;
 use App\Task\Task;
 use App\Task\TaskHelper;
 use EasySwoole\Core\Swoole\Task\TaskManager;
+use App\Model\Friend as FriendModel;
 
 class FriendService
 {
@@ -45,23 +47,35 @@ class FriendService
 
         if($from_user['online']){
             if($check){
-                $taskDate = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriend', $user))
+                $taskData = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriend', $user))
                     ->getTaskData();
             }else{
-                $taskDate = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriendFail', $number.' 拒绝好友申请'))
+                $taskData = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriendFail', $number.' 拒绝好友申请'))
                     ->getTaskData();
             }
-            $taskClass = new Task($taskDate);
+            $taskClass = new Task($taskData);
             TaskManager::async($taskClass);
         }
 
         if($check){
             if($user['online']){
-                $taskDate = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($number), 'newFriend', $from_user))
+                $taskData = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($number), 'newFriend', $from_user))
                     ->getTaskData();
-                $taskClass = new Task($taskDate);
+                $taskClass = new Task($taskData);
                 TaskManager::async($taskClass);
             }
         }
     }
+
+    /*
+     * 检查二人是否是好友关系
+     */
+    public static function checkIsFriend($user1_id, $user2_id){
+        $ids = FriendModel::getAllFriends($user1_id);
+        if(in_array($user2_id, $ids)){
+            return true;
+        }
+        return false;
+    }
+
 }

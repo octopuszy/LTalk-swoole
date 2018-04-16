@@ -98,6 +98,10 @@ class BaseWs extends WebSocketController
             ]))->getMsg();
             return $data;
         }
-        return $ishas;
+        $user = [
+            'fd'    => $fd,
+            'user'  => $ishas
+        ];
+        return $user;
     }
 }
