@@ -26,7 +26,6 @@ class OnClose
         UserCacheService::delTokenUser($info['token']);
         UserCacheService::delNumberUserOtherInfo($info['user']['number']);
         UserCacheService::delFdToken($this->fd);
-        echo '已销毁相关缓存...'.PHP_EOL;
     }
 
     private function getInfoByFd(){

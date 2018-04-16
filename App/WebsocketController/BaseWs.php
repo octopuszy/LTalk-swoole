@@ -98,6 +98,6 @@ class BaseWs extends WebSocketController
             ]))->getMsg();
             return $data;
         }
-        return true;
+        return $ishas;
     }
 }

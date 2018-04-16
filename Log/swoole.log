@@ -1,51 +1,34 @@
-[2018-04-14 10:24:43 ^29331.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+[2018-04-16 19:45:19 ^27651.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
 Stack trace:
-#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
-#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
-[2018-04-14 10:24:43 $29329.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
-[2018-04-14 10:45:14 ^30255.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
+#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
+#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
+#3 /home/www/LTalk/App/Task/DoT
+[2018-04-16 19:45:19 $27648.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
+[2018-04-16 19:50:30 ^28523.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
 Stack trace:
-#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
-#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
-[2018-04-14 10:45:14 $30253.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
-[2018-04-14 10:48:24 ^30402.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
+#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
+#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
+#3 /home/www/LTalk/App/Task/DoT
+[2018-04-16 19:50:30 $28520.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
+[2018-04-16 19:52:57 ^28697.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
 Stack trace:
-#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
-#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
-[2018-04-14 10:48:24 $30400.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
-[2018-04-14 10:50:36 ^30532.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
+#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
+#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
+#3 /home/www/LTalk/App/Task/DoT
+[2018-04-16 19:52:57 $28694.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
+[2018-04-16 20:02:10 ^29201.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
 Stack trace:
-#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
-#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
-[2018-04-14 10:50:36 $30530.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
-[2018-04-14 12:24:31 *1334.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
-[2018-04-14 12:24:31 *1333.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
-[2018-04-14 12:24:31 $1329.0]	WARNING	swSignal_callback: signal[1] callback is null.
-[2018-04-14 12:24:31 $1329.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
-[2018-04-14 12:24:31 $1329.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
-[2018-04-14 12:24:31 $1329.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
-[2018-04-14 12:33:14 ^2915.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Task/DoTask.php:18
+#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
+#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
+#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
+#3 /home/www/LTalk/App/Task/DoT
+[2018-04-16 20:02:10 $29198.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
+[2018-04-16 20:30:21 ^31111.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to undefined method App\Task\DoTask::FriendOk() in /home/www/LTalk/App/Task/Task.php:25
 Stack trace:
-#0 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::RedisSetDatas(Array)
-#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#2 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task)
-[2018-04-14 12:33:14 $2913.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
-[2018-04-15 14:32:01 *3366.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
-[2018-04-15 14:32:01 *3365.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
-[2018-04-15 14:32:01 $3361.0]	WARNING	swSignal_callback: signal[1] callback is null.
-[2018-04-15 14:32:01 $3361.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
-[2018-04-15 14:32:01 $3361.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
-[2018-04-15 14:32:01 $3361.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
-[2018-04-15 14:32:01 #3360.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
-[2018-04-15 16:10:07 #3360.1]	NOTICE	Server is shutdown now.
-[2018-04-15 16:13:03 ^14409.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to undefined method App\Task\DoTask::SendFriendReq() in /home/www/LTalk/App/Task/Task.php:25
-Stack trace:
-#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 1)
-#1 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 1, Object(App\Task\Task))
-#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Componen
-[2018-04-15 16:13:03 $14407.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
-[2018-04-15 19:37:53 #16660.1]	NOTICE	Server is shutdown now.
+#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 1, 0)
+#1 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 1, 0, Object(App\Task\Task))
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Inv
+[2018-04-16 20:30:21 $31109.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0

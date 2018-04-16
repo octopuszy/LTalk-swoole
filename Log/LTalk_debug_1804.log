@@ -1,6 +1,0 @@
-18-04-13 22:38:28:"SQLSTATE[HY000]: General error: 1364 Field 'pawwsord' doesn't have a default value"
-18-04-14 12:30:22:"Class 'App\\HttpController\\Api\\PoolManager' not found"
-18-04-14 12:32:26:"Class 'App\\HttpController\\Api\\PoolManager' not found"
-18-04-14 12:32:49:"Class 'App\\HttpController\\Api\\PoolManager' not found"
-18-04-14 12:34:27:"Call to a member function getObj() on null"
-18-04-14 15:26:49:"Too few arguments to function App\\HttpController\\Common::getRandChar(), 0 passed in \/home\/www\/LTalk\/App\/HttpController\/Api\/Login.php on line 58 and exactly 1 expected"

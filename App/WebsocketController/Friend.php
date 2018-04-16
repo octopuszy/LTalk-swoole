@@ -27,13 +27,26 @@ class Friend extends BaseWs
         $content = $this->request()->getArg('content');
         $user = $this->getUserInfo();
         $to_number = $content['number'];
-        $res = $this->onlineValidate($to_number);
-        if(!$res===true) {
-            $this->response()->write(json_encode($res));
+        $to_user = $this->onlineValidate($to_number);
+        if(isset($to_user['errorCode'])) {
+            $this->response()->write(json_encode($to_user));
             return;
         }
+
+        // 查二者是否已经是好友
+        $ids = FriendModel::getAllFriends($user['user']['id']);
+        if(in_array($to_user['id'], $ids)){
+            $err = (new FriendException([
+                'msg' => '不可重复添加好友',
+                'errorCode' => 40004
+            ]))->getMsg();
+            $this->response()->write(json_encode($err));
+            return;
+        }
+
         // 存储请求状态
         UserCacheService::saveFriendReq($user['user']['number'], $to_number);
+
         // 准备发送请求的数据
         $data = [
             'method'    => 'friendRequest',
@@ -83,16 +96,14 @@ class Friend extends BaseWs
             $from_user = UserModel::getUser(['number' => $from_number]);
             FriendModel::newFriend($user['user']['id'], $from_user['id']);
         }
-        $taskData = [
-            'method' => 'FriendOk',
-            'data'  => [
-                'from_number'   => $from_number,
-                'number'        => $user['user']['number'],
-                'check'         => $check
-            ]
+
+        // 异步通知双方
+        $data  = [
+            'from_number'   => $from_number,
+            'number'        => $user['user']['number'],
+            'check'         => $check
         ];
-        $taskClass = new Task($taskData);
-        TaskManager::async($taskClass);
+        FriendService::doReq($data);
     }
 
     /*

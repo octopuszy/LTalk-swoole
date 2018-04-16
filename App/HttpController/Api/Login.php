@@ -128,6 +128,5 @@ class Login extends Controller
         // 返回 token
         $this->writeJson(200, $token);
     }
-
-
+    
 }
