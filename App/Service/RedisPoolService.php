@@ -33,7 +33,6 @@ class RedisPoolService
     }
 
 
-
     public function set($key, $value){
         if(is_array($value)){
             $value = json_encode($value);
@@ -46,11 +45,24 @@ class RedisPoolService
         return $res;
     }
 
+    public function keys($pattern){
+        $res = $this->pool_obj->exec('keys', $pattern);
+        return $res;
+    }
+
     /*
      * 添加一个集合成员
      */
     public function sAdd($key, $value = []){
         $res = $this->pool_obj->exec('sAdd', $key, $value);
+        return $res;
+    }
+
+    /*
+     * 随机获取一个集合成员
+     */
+    public function sRandMember($key, $count = null){
+        $res = $this->pool_obj->exec('sRandMember', $key, $count);
         return $res;
     }
 
@@ -65,8 +77,8 @@ class RedisPoolService
     /*
      * 删除一个集合成员
      */
-    public function sRem($key){
-        $res = $this->pool_obj->exec('sRem', $key);
+    public function sRem($key, $mem){
+        $res = $this->pool_obj->exec('sRem', $key, $mem);
         return $res;
     }
 
@@ -101,6 +113,9 @@ class RedisPoolService
         $flag = 1;
         $data = [];
         $tmp = [];
+        if(empty($res)){
+           return [];
+        }
         foreach ($res as $key => $val){
             if($flag%2==0){
                 $tmp_key = array_pop($tmp);

@@ -25,4 +25,22 @@ class DoTask
         $model::$method($data['data']);
     }
 
+    public static function sendToALl($data){
+        $serv = ServerManager::getInstance()->getServer();
+        $start_fd = 0;
+        while(true)
+        {
+            $conn_list = $serv->connection_list($start_fd, 10);
+            if($conn_list===false or count($conn_list) === 0)
+            {
+                break;
+            }
+            $start_fd = end($conn_list);
+            foreach($conn_list as $fd)
+            {
+                $serv->push($fd, json_encode($data));
+            }
+        }
+    }
+
 }

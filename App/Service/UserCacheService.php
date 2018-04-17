@@ -133,6 +133,18 @@ class UserCacheService
         return $redis_pool->get($key);
     }
 
+    public static function saveFds($fd){
+        $key = Config::getInstance()->getConf('setting.cache_name.all_fd');
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->sAdd($key, $fd);
+    }
+
+    public static function getFdFromSet(){
+        $key = Config::getInstance()->getConf('setting.cache_name.all_fd');
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->sRandMember($key);
+    }
+
     /*
      * 销毁
      */
@@ -149,7 +161,7 @@ class UserCacheService
     }
 
     public static function delFdToken($fd){
-        $key = Config::getInstance()->getConf('setting.cache_name.number_userOtherInfo');
+        $key = Config::getInstance()->getConf('setting.cache_name.fd_token');
         $key = sprintf($key,$fd);
         self::delHashKey($key);
     }
@@ -161,14 +173,23 @@ class UserCacheService
         return $redis_pool->del($key);
     }
 
+    public static function delFds($fd){
+        $key = Config::getInstance()->getConf('setting.cache_name.all_fd');
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->sRem($key, $fd);
+    }
+
     /*
      * 删除 hash 键下的所有值
      */
     private static function delHashKey($key){
         $redis_pool = RedisPoolService::getRedisPool();
         $res = $redis_pool->hKeys($key);
-        foreach ($res as $val){
-            $redis_pool->hDel($key, $val);
+        if($res){
+            foreach ($res as $val){
+                $redis_pool->hDel($key, $val);
+            }
         }
+
     }
 }

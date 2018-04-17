@@ -9,6 +9,7 @@
 namespace App\WebsocketController;
 
 
+use App\Exception\Websocket\TokenException;
 use App\Service\UserCacheService;
 
 class OnOpen extends BaseWs
@@ -23,7 +24,11 @@ class OnOpen extends BaseWs
      */
     public function init(){
         $user = $this->getUserInfo();
-
+        if(!$user){
+            $err = (new TokenException())->getMsg();
+            $this->response()->write(json_encode($err));
+            return;
+        }
         //初始化所有相关缓存
         $this->saveCache($user);
 
@@ -38,6 +43,9 @@ class OnOpen extends BaseWs
 
         // 添加 fd 与 token 关联缓存，close 时可以销毁 fd 相关缓存
         UserCacheService::saveTokenByFd($user['fd'], $user['token']);
+
+        // 添加 fd 到fd集合
+        UserCacheService::saveFds($user['fd']);
     }
 
     private function sendOnlineMsg(){

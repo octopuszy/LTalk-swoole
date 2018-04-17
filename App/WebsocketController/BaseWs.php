@@ -10,6 +10,7 @@ namespace App\WebsocketController;
 
 
 use App\Exception\Websocket\FriendException;
+use App\Exception\Websocket\TokenException;
 use App\Exception\Websocket\WsException;
 use App\Model\User as UserModel;
 use App\Service\UserCacheService;
@@ -30,11 +31,9 @@ class BaseWs extends WebSocketController
     protected function onRequest(?string $actionName): bool
     {
         $content = $this->request()->getArg('content');
-        if(!isset($content['token'])){
-            return false;
-        }
-        if(!UserCacheService::getNumByToken($content['token'])){
-            return false;
+        if(!isset($content['token']) || !UserCacheService::getNumByToken($content['token'])){
+            $err = (new TokenException())->getMsg();
+            return json_encode($err);
         }
         return true;
     }
@@ -47,7 +46,9 @@ class BaseWs extends WebSocketController
         $token = $content['token'];
         $fd = $this->client()->getFd();
         $user = UserCacheService::getUserByToken($token);
-
+        if(empty($user)){
+            return false;
+        }
         $data = [
             'token' => $content['token'],
             'fd'    => $fd,

@@ -8,7 +8,6 @@
 
 namespace App\Sock\Parser;
 
-use App\Exception\Websocket\TokenException;
 use EasySwoole\Config;
 use EasySwoole\Core\Socket\AbstractInterface\ParserInterface;
 use EasySwoole\Core\Socket\Common\CommandBean;
@@ -33,7 +32,7 @@ class WebSock implements ParserInterface
          */
         if(strlen($raw) == 0){
 //            $data = (new TokenException())->getMsg();
-            return json_encode('');
+            return null;
         }
         return $raw;
     }
