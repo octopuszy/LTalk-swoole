@@ -13,6 +13,7 @@ use App\Exception\Websocket\WsException;
 use App\HttpController\Common;
 use App\Model\Group as GroupModel;
 use App\Model\GroupMember as GroupMemberModel;
+use App\Model\GroupMember;
 use App\Service\UserCacheService;
 use App\Task\Task;
 use App\Task\TaskHelper;
@@ -106,6 +107,12 @@ class Group extends BaseWs
      * 群组列表
      */
     public function getGroups(){
-
+        $user = $this->getUserInfo();
+        $groups = GroupMember::getGroups(['user_number'=>$user['user']['number']]);
+        $msg = [
+            'method'    => 'groupList',
+            'data'      =>  $groups
+        ];
+        $this->response()->write(json_encode($msg));
     }
 }
