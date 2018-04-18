@@ -143,6 +143,26 @@ class RedisPoolService
         return $res;
     }
 
+    public function lPush($key, $mem){
+        $res = $this->pool_obj->exec('lPush', $key, $mem);
+        return $res;
+    }
+
+    public function lIndex($key, $index){
+        $res = $this->pool_obj->exec('lIndex', $key, $index);
+        return $res;
+    }
+
+    public function lLen($key){
+        $res = $this->pool_obj->exec('lIndex', $key);
+        return $res;
+    }
+
+    public function lRem($key, $val, $count=0){
+        $res = $this->pool_obj->exec('lRem', $key, $val, $count);
+        return $res;
+    }
+
     public function __destruct()
     {
         $this->pool->freeObj($this->pool_obj);

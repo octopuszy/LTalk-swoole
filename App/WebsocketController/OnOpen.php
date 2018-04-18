@@ -10,6 +10,7 @@ namespace App\WebsocketController;
 
 
 use App\Exception\Websocket\TokenException;
+use App\Model\GroupMember;
 use App\Service\UserCacheService;
 
 class OnOpen extends BaseWs
@@ -29,11 +30,13 @@ class OnOpen extends BaseWs
             $this->response()->write(json_encode($err));
             return;
         }
+        print_r($user);
         //初始化所有相关缓存
         $this->saveCache($user);
 
         // 查出所有好友，查所有好友的在线状态，向所有好友发送异步上线提醒
         $this->sendOnlineMsg();
+
         $this->sendMsg();
     }
 
@@ -46,6 +49,14 @@ class OnOpen extends BaseWs
 
         // 添加 fd 到fd集合
         UserCacheService::saveFds($user['fd']);
+
+        // 查找用户所在所有组，初始化组缓存
+        $groups = GroupMember::getGroups(['user_number'=>$user['user']['number']]);
+        if(!$groups->isEmpty()){
+            foreach ($groups as $val){
+                UserCacheService::setGroupFds($val->gnumber, $user['fd']);
+            }
+        }
     }
 
     private function sendOnlineMsg(){

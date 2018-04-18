@@ -9,6 +9,7 @@
 namespace App\Sock\Parser;
 
 
+use App\Model\GroupMember;
 use App\Service\UserCacheService;
 
 class OnClose
@@ -29,6 +30,13 @@ class OnClose
             UserCacheService::delFdToken($this->fd);
             UserCacheService::delFds($this->fd);
 
+            $groups = GroupMember::getGroups(['user_number'=>$info['user']['number']]);
+            if(!$groups->isEmpty()){
+                foreach ($groups as $val){
+                    UserCacheService::delGroupFd($val->gnumber, $this->fd);
+                }
+            }
+            echo '销毁缓存完毕...'.PHP_EOL;
         }
     }
 

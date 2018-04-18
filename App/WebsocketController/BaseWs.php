@@ -33,7 +33,8 @@ class BaseWs extends WebSocketController
         $content = $this->request()->getArg('content');
         if(!isset($content['token']) || !UserCacheService::getNumByToken($content['token'])){
             $err = (new TokenException())->getMsg();
-            return json_encode($err);
+            $this->response()->write(json_encode($err));
+            return false;
         }
         return true;
     }

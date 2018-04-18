@@ -145,6 +145,33 @@ class UserCacheService
         return $redis_pool->sRandMember($key);
     }
 
+    public static function setGroupFds($gnumber,$fd){
+        $key = Config::getInstance()->getConf('setting.cache_name.group_number_fd');
+        $key = sprintf($key,$gnumber);
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->lPush($key, $fd);
+    }
+
+    public static function getGroupFdsLen($gnumber){
+        $key = Config::getInstance()->getConf('setting.cache_name.group_number_fd');
+        $key = sprintf($key,$gnumber);
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->lLen($key);
+    }
+
+    public static function getGroupFd($gnumber, $index){
+        $key = Config::getInstance()->getConf('setting.cache_name.group_number_fd');
+        $key = sprintf($key,$gnumber);
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->lIndex($key, $index);
+    }
+
+    public static function delGroupFd($gnumber, $fd){
+        $key = Config::getInstance()->getConf('setting.cache_name.group_number_fd');
+        $key = sprintf($key,$gnumber);
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->lRem($key, $fd);
+    }
     /*
      * 销毁
      */

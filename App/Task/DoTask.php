@@ -38,7 +38,10 @@ class DoTask
             $start_fd = end($conn_list);
             foreach($conn_list as $fd)
             {
-                $serv->push($fd, json_encode($data));
+                $status = $serv->connection_info($fd);
+                if($status['websocket_status']==3){
+                    $serv->push($fd, json_encode($data));
+                }
             }
         }
     }
