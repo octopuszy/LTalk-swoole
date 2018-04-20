@@ -30,7 +30,6 @@ class OnOpen extends BaseWs
             $this->response()->write(json_encode($err));
             return;
         }
-        print_r($user);
         //初始化所有相关缓存
         $this->saveCache($user);
 

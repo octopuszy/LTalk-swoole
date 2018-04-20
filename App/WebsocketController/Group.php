@@ -13,12 +13,9 @@ use App\Exception\Websocket\WsException;
 use App\HttpController\Common;
 use App\Model\Group as GroupModel;
 use App\Model\GroupMember as GroupMemberModel;
-use App\Model\GroupMember;
+use App\Service\GroupService;
 use App\Service\UserCacheService;
-use App\Task\Task;
-use App\Task\TaskHelper;
 use EasySwoole\Core\Component\Logger;
-use EasySwoole\Core\Swoole\Task\TaskManager;
 
 class Group extends BaseWs
 {
@@ -60,6 +57,7 @@ class Group extends BaseWs
         while ( !GroupModel::getGroup(['gnumber'=>$number])->isEmpty() ){
             $number = Common::generate_code(8);
         }
+
         // 保存群信息，并加入群
         $group_data = [
             'gnumber'       => $number,
@@ -84,23 +82,72 @@ class Group extends BaseWs
         UserCacheService::setGroupFds($number, $user['fd']);
 
         // 异步通知
-        $toData = [
+        $g_info = [
             'gname'  => $gname,
             'ginfo'  => $ginfo,
             'gnumber'=> $number
         ];
-
-        $taskData = (new TaskHelper('sendMsg', $user['fd'], 'newGroup', $toData))
-            ->getTaskData();
-        $taskClass = new Task($taskData);
-        TaskManager::async($taskClass);
+        GroupService::sendNewGroupInfo($g_info, $user);
     }
 
     /*
      * 加入群组
+     * 1. 查询群组是否存在
+     * 2. 查询是否已在群组中
+     * 3. 写入数据库，存缓存
+     * 4. 发送群组信息
      */
     public function joinGroup(){
+        $content = $this->request()->getArg('content');
+        $user = $this->getUserInfo();
+        $gnumber = $content['gnumber'];
 
+        //查询群组是否存在
+        $res = GroupModel::getGroup(['gnumber'=>$gnumber], true);
+        if(!$res){
+            $msg = (new GroupException([
+                'msg' => '群组不存在',
+                'errorCode' => 70002
+            ]))->getMsg();
+            $this->response()->write(json_encode($msg));
+            return;
+        }
+
+        // 查询是否在群组中
+        $is_in = GroupMemberModel::getGroups(['user_number'=>$user['user']['number'], 'gnumber'=>$gnumber]);
+        if(!$is_in->isEmpty()){
+            $msg = (new GroupException([
+                'msg' => '您已在此群组中',
+                'errorCode' => 70003
+            ]))->getMsg();
+            $this->response()->write(json_encode($msg));
+            return;
+        }
+
+        // 写入数据库
+        $member_data = [
+            'gnumber'       => $gnumber,
+            'user_number'   => $user['user']['number'],
+        ];
+        try{
+            GroupMemberModel::newGroupMember($member_data);
+        }catch (\Exception $e){
+            Logger::getInstance()->log($e->getMessage(),'LTalk_debug');
+            $msg = (new WsException())->getMsg();
+            $this->response()->write(json_encode($msg));
+            return;
+        }
+
+        // 创建缓存
+        UserCacheService::setGroupFds($gnumber, $user['fd']);
+
+        // 异步通知
+        $g_info = [
+            'gname'  => $res['gname'],
+            'ginfo'  => $res['ginfo'],
+            'gnumber'=> $res['gnumber'],
+        ];
+        GroupService::sendNewGroupInfo($g_info, $user);
     }
 
     /*
@@ -108,7 +155,7 @@ class Group extends BaseWs
      */
     public function getGroups(){
         $user = $this->getUserInfo();
-        $groups = GroupMember::getGroups(['user_number'=>$user['user']['number']]);
+        $groups = GroupMemberModel::getGroups(['user_number'=>$user['user']['number']]);
         $msg = [
             'method'    => 'groupList',
             'data'      =>  $groups

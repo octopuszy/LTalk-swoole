@@ -18,8 +18,13 @@ class Group extends Model
         return self::where($where)->count();
     }
 
-    public static function getGroup($where){
-        return self::where($where)->select();
+    public static function getGroup($where, $single = false){
+        if($single){
+            return self::where($where)->find();
+        }else{
+            return self::where($where)->select();
+        }
+
     }
 
     public static function newGroup($data){

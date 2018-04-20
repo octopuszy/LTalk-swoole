@@ -12,6 +12,7 @@ namespace App\Service;
 use App\Model\ChatRecord;
 use App\Task\Task;
 use App\Task\TaskHelper;
+use EasySwoole\Core\Swoole\ServerManager;
 use EasySwoole\Core\Swoole\Task\TaskManager;
 
 class ChatService
@@ -56,6 +57,45 @@ class ChatService
                 'data'     => [
                     'uid'       => $data['from']['user']['id'],
                     'to_id'     => $data['to']['user']['id'],
+                    'data'      => $data['data']
+                ]
+            ]
+        ];
+        $taskClass = new Task($taskData);
+        TaskManager::async($taskClass);
+    }
+
+    /*
+     * 发送群组聊天记录
+     */
+    public static function sendGroupMsg($data){
+        $res = [
+            'groupNumber'  => $data['gnumber'],
+            'msg'   => $data['data'],
+            'user'  => $data['user']['user']
+        ];
+
+        $myfd = $data['user']['fd'];
+        $len = UserCacheService::getGroupFdsLen($data['gnumber']);
+        $serv = ServerManager::getInstance()->getServer();
+        for($i=0; $i<$len; $i++){
+            $fd = UserCacheService::getGroupFd($data['gnumber'], $i);
+            if($fd!=$myfd){
+                $serv->push($fd, json_encode($res));
+            }
+        }
+    }
+
+    // 存储群组消息
+    public static function saveGroupMsg($data){
+        $taskData = [
+            'method' => 'saveMysql',
+            'data'  => [
+                'class'    => 'App\Model\GroupChatRecord',
+                'method'   => 'newRecord',
+                'data'     => [
+                    'uid'       => $data['user']['user']['id'],
+                    'gnumber'   => $data['gnumber'],
                     'data'      => $data['data']
                 ]
             ]

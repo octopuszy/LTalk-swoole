@@ -154,7 +154,7 @@ class RedisPoolService
     }
 
     public function lLen($key){
-        $res = $this->pool_obj->exec('lIndex', $key);
+        $res = $this->pool_obj->exec('lLen', $key);
         return $res;
     }
 

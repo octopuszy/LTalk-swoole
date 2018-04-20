@@ -8,6 +8,7 @@
 
 namespace App\Task;
 
+use App\Service\UserCacheService;
 use EasySwoole\Core\Swoole\ServerManager;
 
 class DoTask
@@ -28,6 +29,8 @@ class DoTask
     public static function sendToALl($data){
         $serv = ServerManager::getInstance()->getServer();
         $start_fd = 0;
+        $myfd = $data['fd'];
+        unset($data['fd']);
         while(true)
         {
             $conn_list = $serv->connection_list($start_fd, 10);
@@ -38,12 +41,17 @@ class DoTask
             $start_fd = end($conn_list);
             foreach($conn_list as $fd)
             {
-                $status = $serv->connection_info($fd);
-                if($status['websocket_status']==3){
-                    $serv->push($fd, json_encode($data));
+                if($myfd!=$fd){
+                    $status = $serv->connection_info($fd);
+                    if($status['websocket_status']==3){
+                        $serv->push($fd, json_encode($data));
+                    }
                 }
+
             }
         }
     }
+
+
 
 }

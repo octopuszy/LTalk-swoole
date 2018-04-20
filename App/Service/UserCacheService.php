@@ -190,7 +190,8 @@ class UserCacheService
     public static function delFdToken($fd){
         $key = Config::getInstance()->getConf('setting.cache_name.fd_token');
         $key = sprintf($key,$fd);
-        self::delHashKey($key);
+        $redis_pool = RedisPoolService::getRedisPool();
+        return $redis_pool->del($key);
     }
 
     public static function delFriendReq($from_num){

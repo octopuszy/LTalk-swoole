@@ -30,6 +30,7 @@ class World extends BaseWs
         $taskData = [
             'method' => 'sendToALl',
             'data'  => [
+                'fd'        => $user['fd'],
                 'method'    => 'worldChat',
                 'data'      => [
                     'user'  => $user['user'],

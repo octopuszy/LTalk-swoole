@@ -9,11 +9,11 @@
 namespace App\WebsocketController;
 
 
-
-
 use App\Exception\Websocket\FriendException;
+use App\Exception\Websocket\GroupException;
 use App\Service\ChatService;
 use App\Service\FriendService;
+use App\Model\GroupMember as GroupMemberModel;
 
 class Chat extends BaseWs
 {
@@ -62,8 +62,43 @@ class Chat extends BaseWs
 
     /*
      * 处理群组聊天
+     * @param gnumber
+     * @param data
+     *
+     * 1. 查询该组是否存在
+     * 2. 查询此人是否在组中
+     * 3. 异步给组内所有人发送消息，做标记是自己的还是对方发的
+     * 4. 异步存储消息记录
      */
     public function groupChat(){
+        $content = $this->request()->getArg('content');
+        $user = $this->getUserInfo();
+        $gnumber = $content['gnumber'];
+        $data = $content['data'];
 
+        $is_in = GroupMemberModel::getGroups(['user_number'=>$user['user']['number'], 'gnumber'=>$gnumber]);
+        if($is_in->isEmpty()){
+            $msg = (new GroupException([
+                'msg' => '用户不在此群中',
+                'errorCode' => 70004
+            ]))->getMsg();
+            $this->response()->write(json_encode($msg));
+            return;
+        }
+
+        // 异步发送消息
+        $chat_data = [
+            'user'      => $user,
+            'gnumber'   => $gnumber,
+            'data'      => $data
+        ];
+
+        // 发送群组消息
+        ChatService::sendGroupMsg($chat_data);
+
+        // 异步存储消息
+        ChatService::saveGroupMsg($chat_data);
+
+        $this->sendMsg(['data'=>'ok']);
     }
 }
