@@ -11,7 +11,10 @@ namespace App\WebsocketController;
 
 use App\Exception\Websocket\TokenException;
 use App\Model\GroupMember;
+use App\Service\FriendService;
 use App\Service\UserCacheService;
+use App\Model\Friend as FriendModel;
+use EasySwoole\Core\Swoole\ServerManager;
 
 class OnOpen extends BaseWs
 {
@@ -33,8 +36,8 @@ class OnOpen extends BaseWs
         //初始化所有相关缓存
         $this->saveCache($user);
 
-        // 查出所有好友，查所有好友的在线状态，向所有好友发送异步上线提醒
-        $this->sendOnlineMsg();
+        // 查出所有好友，查所有好友的在线状态，向所有好友发送上线提醒
+        $this->sendOnlineMsg($user);
 
         $this->sendMsg();
     }
@@ -58,7 +61,26 @@ class OnOpen extends BaseWs
         }
     }
 
-    private function sendOnlineMsg(){
+    /*
+     * 发送上线通知
+     */
+    private function sendOnlineMsg($user){
+        $friends = FriendModel::getAllFriends($user['user']['id']);
+        $friends = FriendService::getFriends($friends);
+        $server = ServerManager::getInstance()->getServer();
 
+        $data = [
+            'method'    => 'friendOnLine',
+            'data'      => [
+                'number'    => $user['user']['number'],
+                'nickname'  => $user['user']['nickname'],
+            ]
+        ];
+        foreach ($friends as $val){
+            if($val['online']){
+                $fd = UserCacheService::getFdByNum($val['number']);
+                $server->push($fd,json_encode($data));
+            }
+        }
     }
 }

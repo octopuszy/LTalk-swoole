@@ -99,6 +99,6 @@ class Chat extends BaseWs
         // 异步存储消息
         ChatService::saveGroupMsg($chat_data);
 
-        $this->sendMsg(['data'=>'ok']);
+        $this->sendMsg();
     }
 }
