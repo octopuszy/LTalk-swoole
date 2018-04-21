@@ -9,7 +9,7 @@
 namespace App\Service;
 
 
-use App\HttpController\Common;
+use App\Service\Common;
 use EasySwoole\Config;
 
 class Token

@@ -2,18 +2,23 @@
 
 namespace EasySwoole;
 
+use App\Process\SendStatistics;
 use App\Sock\Parser\OnClose;
 use App\Sock\Parser\WebSock;
+use App\Task\Task;
 use App\Utility\RedisPool;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
 use EasySwoole\Core\Component\Di;
 use EasySwoole\Core\Component\SysConst;
 use \EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use \EasySwoole\Core\Swoole\EventHelper;
+use EasySwoole\Core\Swoole\Process\ProcessManager;
 use \EasySwoole\Core\Swoole\ServerManager;
 use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
 use \EasySwoole\Core\Http\Response;
+use EasySwoole\Core\Swoole\Task\TaskManager;
+use EasySwoole\Core\Swoole\Time\Timer;
 use think\Db;
 
 /**
@@ -58,6 +63,19 @@ Class EasySwooleEvent implements EventInterface
         $register->add($register::onClose, function (\swoole_server $server, $fd, $reactorId ) {
             (new OnClose($fd))->close();
         });
+
+        ProcessManager::getInstance()->addProcess('SendStatistics', SendStatistics::class);
+
+        // 向所有 websocket fd 发送当前在线人数
+        $register->add($register::onWorkerStart, function (\swoole_server $server, $workerId) {
+            # 获取在线人数，启动定时器，每两秒发一次
+            if ($workerId == 0) {
+                Timer::loop(2000, function () {
+                    ProcessManager::getInstance()->writeByProcessName('SendStatistics', 'send');  # 向自定义进程发消息
+                });
+            }
+        });
+
     }
 
     static public function onRequest(Request $request, Response $response): void

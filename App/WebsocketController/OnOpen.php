@@ -11,9 +11,11 @@ namespace App\WebsocketController;
 
 use App\Exception\Websocket\TokenException;
 use App\Model\GroupMember;
+use App\Service\Common;
 use App\Service\FriendService;
 use App\Service\UserCacheService;
 use App\Model\Friend as FriendModel;
+use EasySwoole\Core\Component\Logger;
 use EasySwoole\Core\Swoole\ServerManager;
 
 class OnOpen extends BaseWs
@@ -38,6 +40,9 @@ class OnOpen extends BaseWs
 
         // 查出所有好友，查所有好友的在线状态，向所有好友发送上线提醒
         $this->sendOnlineMsg($user);
+
+        // 记录访问日志
+        $this->saveAccessLog();
 
         $this->sendMsg();
     }
@@ -82,5 +87,15 @@ class OnOpen extends BaseWs
                 $server->push($fd,json_encode($data));
             }
         }
+    }
+
+    /*
+     * 存储访问日志
+     */
+    private function saveAccessLog(){
+        $server = ServerManager::getInstance()->getServer();
+        $info = $server->connection_info($fd = $this->client()->getFd());
+        $file_content = $info['remote_ip'];
+        Logger::getInstance()->log($file_content,'access');
     }
 }

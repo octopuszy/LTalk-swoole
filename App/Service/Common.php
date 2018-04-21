@@ -6,7 +6,7 @@
  * Time: 上午9:22
  */
 
-namespace App\HttpController;
+namespace App\Service;
 
 
 class Common
@@ -26,4 +26,5 @@ class Common
     public static function generate_code($length = 6) {
         return rand(pow(10,($length-1)), pow(10,$length)-1);
     }
+
 }

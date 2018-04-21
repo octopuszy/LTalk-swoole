@@ -10,7 +10,7 @@ namespace App\WebsocketController;
 
 use App\Exception\Websocket\GroupException;
 use App\Exception\Websocket\WsException;
-use App\HttpController\Common;
+use App\Service\Common;
 use App\Model\Group as GroupModel;
 use App\Model\GroupMember as GroupMemberModel;
 use App\Service\GroupService;

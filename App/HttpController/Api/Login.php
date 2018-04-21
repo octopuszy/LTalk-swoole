@@ -12,7 +12,7 @@ namespace App\HttpController\Api;
 use App\Exception\LoginException;
 use App\Exception\ParameterException;
 use App\Exception\RegisterException;
-use App\HttpController\Common;
+use App\Service\Common;
 use App\Model\User as UserModel;
 use App\Service\LoginService;
 use App\Service\RedisPoolService;
@@ -128,5 +128,6 @@ class Login extends Controller
         // 返回 token
         $this->writeJson(200, $token);
     }
-    
+
+
 }
