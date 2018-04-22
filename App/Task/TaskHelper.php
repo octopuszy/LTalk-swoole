@@ -30,6 +30,7 @@ class TaskHelper
             'data'  => [
                 'fd'    => $this->fd,
                 'data'  => [
+                    'type'      => 'ws',
                     'method'    => $this->web_method,
                     'data'      => $this->data
                 ]

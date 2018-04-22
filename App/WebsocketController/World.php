@@ -40,6 +40,6 @@ class World extends BaseWs
         ];
         $taskClass = new Task($taskData);
         TaskManager::async($taskClass);
-        $this->sendMsg(['data'=>'ok']);
+//        $this->sendMsg(['data'=>'ok']);  // 不发送任何消息
     }
 }

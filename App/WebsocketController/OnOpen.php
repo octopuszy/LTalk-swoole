@@ -44,7 +44,7 @@ class OnOpen extends BaseWs
         // 记录访问日志
         $this->saveAccessLog();
 
-        $this->sendMsg();
+        $this->sendMsg(['data'=>'初始化完成']);
     }
 
     private function saveCache($user){

@@ -24,7 +24,7 @@ class ChatService
     public static function sendPersonalMsg($data){
         // 给自己发
         $myData = [
-            'flag'  => 1,                       // 自己的消息 1，对方的消息 2
+            'flag'  => 1,                       // 1自己的消息 ，2对方的消息
             'data'  => $data['data'],
             'number'=> $data['to']['user']['number']    // 跟谁聊
         ];
@@ -35,7 +35,7 @@ class ChatService
 
         // 给对方发
         $toData = [
-            'flag'  => 2,                       // 自己的消息 1，对方的消息 2
+            'flag'  => 2,                       // 1自己的消息 ，2对方的消息
             'data'  => $data['data'],
             'number'=> $data['from']['user']['number']  // 哪来的
         ];

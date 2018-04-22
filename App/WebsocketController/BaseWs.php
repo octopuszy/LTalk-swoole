@@ -65,7 +65,7 @@ class BaseWs extends WebSocketController
     protected function sendMsg($params =[]){
         $data = [
             'type'      => 'ws',
-            'method'    => '',
+            'method'    => 'ok',
             'data'      => 'ok'
         ];
         if(array_key_exists('type',$params)){

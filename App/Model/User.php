@@ -13,7 +13,7 @@ use think\Model;
 
 class User extends Model
 {
-    protected $hidden = ['created_time'];
+    protected $hidden = ['created_time','id'];
 
     public static function getUser($where){
         return self::where($where)->find();

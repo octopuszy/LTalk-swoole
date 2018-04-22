@@ -50,7 +50,7 @@ class FriendService
                 $taskData = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriend', $user))
                     ->getTaskData();
             }else{
-                $taskData = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriendFail', $number.' 拒绝好友申请'))
+                $taskData = (new TaskHelper('sendMsg', UserCacheService::getFdByNum($from_number), 'newFriendFail', $number.'('.$user["nickname"].')'.' 拒绝好友申请'))
                     ->getTaskData();
             }
             $taskClass = new Task($taskData);

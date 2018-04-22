@@ -19,6 +19,8 @@ use EasySwoole\Core\Component\Logger;
 
 class Group extends BaseWs
 {
+    protected $hidden = ['id','creater_time'];
+
     /*
      * 创建群组
      * 1. 验证此人创建了多少群组，不可超过3个
@@ -156,10 +158,6 @@ class Group extends BaseWs
     public function getGroups(){
         $user = $this->getUserInfo();
         $groups = GroupMemberModel::getGroups(['user_number'=>$user['user']['number']]);
-        $msg = [
-            'method'    => 'groupList',
-            'data'      =>  $groups
-        ];
-        $this->response()->write(json_encode($msg));
+        $this->sendMsg(['method'=>'groupList','data'=>$groups]);
     }
 }

@@ -13,6 +13,12 @@ use think\Model;
 
 class GroupMember extends Model
 {
+    protected $hidden = ['id','creater_time'];
+
+    public function info(){
+        return $this->belongsTo('Group','gnumber','gnumber');
+    }
+
     public static function newGroupMember($data){
         $model = new self();
         foreach ($data as $key => $val){
@@ -22,6 +28,6 @@ class GroupMember extends Model
     }
 
     public static function getGroups($where){
-        return self::where($where)->select();
+        return self::where($where)->with('info')->select();
     }
 }

@@ -113,7 +113,7 @@ class Friend extends BaseWs
         $user = $this->getUserInfo();
         $friends = FriendModel::getAllFriends($user['user']['id']);
         $data = FriendService::getFriends($friends);
-        $this->sendMsg(['data'=>$data]);
+        $this->sendMsg(['method'=>'getFriends','data'=>$data]);
     }
 
 
