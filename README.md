@@ -1,6 +1,8 @@
 # Ltalk
 
 ### 前端页面正在加急开发中...
+项目地址：git@github.com:LTalkTeam/LTalkHTML.git
+在线预览：暂时未开放，敬请期待
 
 ### 本项目v1版本有以下功能：
 - [x] 登录 
