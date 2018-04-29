@@ -2,7 +2,8 @@
 
 ### 前端页面正在加急开发中...
 - 项目地址：https://github.com/LTalkTeam/LTalkHTML
-- 在线预览：暂时未开放，敬请期待
+- 在线预览：http://118.24.77.25/LTalkHTML/login.html （群组所有功能正在开发中，暂不可用）
+
 
 ### 本项目v1版本有以下功能：
 - [x] 登录 
