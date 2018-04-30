@@ -1,9 +1,11 @@
 # Ltalk
 
-### 前端：
-- 项目地址：https://github.com/LTalkTeam/LTalkHTML
+
+- 前端项目地址：https://github.com/LTalkTeam/LTalkHTML
 
 - 在线预览：http://118.24.77.25/LTalkHTML/login.html
+
+- 联系方式：octopus.zy.cn@gmail.com
 
 
 ### 本项目v1版本有以下功能：
