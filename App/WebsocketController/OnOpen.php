@@ -44,7 +44,7 @@ class OnOpen extends BaseWs
         // 记录访问日志
         $this->saveAccessLog();
 
-        $this->sendMsg(['data'=>'初始化完成']);
+        $this->sendMsg(['method'=>'initok','data'=>$user['user']]);
     }
 
     private function saveCache($user){
@@ -53,9 +53,6 @@ class OnOpen extends BaseWs
 
         // 添加 fd 与 token 关联缓存，close 时可以销毁 fd 相关缓存
         UserCacheService::saveTokenByFd($user['fd'], $user['token']);
-
-        // 添加 fd 到fd集合
-        UserCacheService::saveFds($user['fd']);
 
         // 查找用户所在所有组，初始化组缓存
         $groups = GroupMember::getGroups(['user_number'=>$user['user']['number']]);
@@ -75,6 +72,7 @@ class OnOpen extends BaseWs
         $server = ServerManager::getInstance()->getServer();
 
         $data = [
+            'type'      => 'ws',
             'method'    => 'friendOnLine',
             'data'      => [
                 'number'    => $user['user']['number'],

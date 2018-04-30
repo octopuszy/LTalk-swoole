@@ -24,6 +24,7 @@ class ChatService
     public static function sendPersonalMsg($data){
         // 给自己发
         $myData = [
+            'time'  => date("H:i:s", time()),
             'flag'  => 1,                       // 1自己的消息 ，2对方的消息
             'data'  => $data['data'],
             'number'=> $data['to']['user']['number']    // 跟谁聊
@@ -35,6 +36,7 @@ class ChatService
 
         // 给对方发
         $toData = [
+            'time'  => date("H:i:s", time()),
             'flag'  => 2,                       // 1自己的消息 ，2对方的消息
             'data'  => $data['data'],
             'number'=> $data['from']['user']['number']  // 哪来的
@@ -70,9 +72,26 @@ class ChatService
      */
     public static function sendGroupMsg($data){
         $res = [
-            'groupNumber'  => $data['gnumber'],
-            'msg'   => $data['data'],
-            'user'  => $data['user']['user']
+            'method'    => 'groupChat',
+            'type'      => 'ws',
+            'data'      => [
+                'time'  => date("H:i:s", time()),
+                'groupNumber'  => $data['gnumber'],
+                'msg'   => $data['data'],
+                'user'  => $data['user']['user'],
+                'flag'  => 2
+            ]
+        ];
+        $myres = [
+            'method'    => 'groupChat',
+            'type'      => 'ws',
+            'data'      => [
+                'time'  => date("H:i:s", time()),
+                'groupNumber'  => $data['gnumber'],
+                'msg'   => $data['data'],
+                'user'  => $data['user']['user'],
+                'flag'  => 1
+            ]
         ];
 
         $myfd = $data['user']['fd'];
@@ -82,6 +101,8 @@ class ChatService
             $fd = UserCacheService::getGroupFd($data['gnumber'], $i);
             if($fd!=$myfd){
                 $serv->push($fd, json_encode($res));
+            }else{
+                $serv->push($fd, json_encode($myres));
             }
         }
     }

@@ -29,13 +29,14 @@ class SendStatistics extends AbstractProcess
     public function onReceive(string $str, ...$args)
     {
         $serv = ServerManager::getInstance()->getServer();
-        $count = count($serv->connections)-1;
+        $count = count($serv->connections);
 
         $start_fd = 0;
         $serv = ServerManager::getInstance()->getServer();
         $res = [
+            'type'   => 'ws',
             'method' => 'Statistics',
-            'data' =>[
+            'data'   =>[
                 'count' => $count
             ]
         ];

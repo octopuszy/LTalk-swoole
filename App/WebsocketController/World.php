@@ -9,6 +9,7 @@
 namespace App\WebsocketController;
 
 
+use App\Service\Common;
 use App\Service\WorldService;
 use App\Task\Task;
 use EasySwoole\Core\Swoole\ServerManager;
@@ -25,14 +26,16 @@ class World extends BaseWs
     public function chat(){
         $content = $this->request()->getArg('content');
         $user = $this->getUserInfo();
-        $data = $content['data'];
+        $data = Common::security($content['data']);
 
         $taskData = [
             'method' => 'sendToALl',
             'data'  => [
                 'fd'        => $user['fd'],
                 'method'    => 'worldChat',
+                'type'      => 'ws',
                 'data'      => [
+                    'time'  => date("H:i:s", time()),
                     'user'  => $user['user'],
                     'msg'   => $data
                 ]

@@ -17,18 +17,9 @@ class RedisPoolService
     private $pool;
     private $pool_obj;
 
-    private static $obj;
-
-    public static function getRedisPool(){
-        if(empty(self::$obj)) {
-            self::$obj = new self();
-        }
-        return self::$obj;
-    }
-
-    private function __construct()
+    public function __construct()
     {
-        $this->pool = PoolManager::getInstance()->getPool(RedisPool::class);
+        $this->pool =  PoolManager::getInstance()->getPool(RedisPool::class);
         $this->pool_obj = $this->pool->getObj();
     }
 

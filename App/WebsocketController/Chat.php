@@ -12,6 +12,7 @@ namespace App\WebsocketController;
 use App\Exception\Websocket\FriendException;
 use App\Exception\Websocket\GroupException;
 use App\Service\ChatService;
+use App\Service\Common;
 use App\Service\FriendService;
 use App\Model\GroupMember as GroupMemberModel;
 
@@ -31,7 +32,7 @@ class Chat extends BaseWs
         $content = $this->request()->getArg('content');
         $user = $this->getUserInfo();
         $to_number = $content['number'];
-        $data = $content['data'];
+        $data = Common::security($content['data']);
 
         $to_user = $this->onlineValidate($to_number);
         if(isset($to_user['errorCode'])) {
@@ -73,8 +74,8 @@ class Chat extends BaseWs
     public function groupChat(){
         $content = $this->request()->getArg('content');
         $user = $this->getUserInfo();
-        $gnumber = $content['gnumber'];
-        $data = $content['data'];
+        $gnumber = isset($content['gnumber'])?$content['gnumber']:"";
+        $data =  Common::security($content['data']);
 
         $is_in = GroupMemberModel::getGroups(['user_number'=>$user['user']['number'], 'gnumber'=>$gnumber]);
         if($is_in->isEmpty()){
@@ -98,7 +99,5 @@ class Chat extends BaseWs
 
         // 异步存储消息
         ChatService::saveGroupMsg($chat_data);
-
-        $this->sendMsg();
     }
 }

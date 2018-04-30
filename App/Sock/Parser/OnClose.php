@@ -60,6 +60,7 @@ class OnClose
         $server = ServerManager::getInstance()->getServer();
 
         $data = [
+            'type'      => 'ws',
             'method'    => 'friendOffLine',
             'data'      => [
                 'number'    => $user['user']['number'],

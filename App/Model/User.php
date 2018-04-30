@@ -13,7 +13,11 @@ use think\Model;
 
 class User extends Model
 {
-    protected $hidden = ['created_time','id'];
+    protected $hidden = ['created_time'];
+
+    public function getLastLoginAttr($value, $data){
+        return date('Y-m-d H:i:s',$value);
+    }
 
     public static function getUser($where){
         return self::where($where)->find();

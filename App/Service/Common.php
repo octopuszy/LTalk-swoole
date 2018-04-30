@@ -27,4 +27,10 @@ class Common
         return rand(pow(10,($length-1)), pow(10,$length)-1);
     }
 
+    public static function security($str){
+        if(!is_string($str)){
+            return false;
+        }
+        return htmlspecialchars(addslashes($str));
+    }
 }
