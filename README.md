@@ -37,18 +37,18 @@
 
 ~~~
 LTalk  WEB部署目录
-├─app          				    应用目录
+├─app                     应用目录
 │  ├─Exception            自定义异常
 │  ├─HttpController       HttpApi 控制器目录
-│  │  ├─Common.php      	公共方法
-│  │  └─Router.php      	自定义路由
+│  │  ├─Common.php        公共方法
+│  │  └─Router.php        自定义路由
 │  │
-│  ├─Model        			  tp orm 
-│  ├─Service         		  服务层
-│  ├─Sock           		  websocket 输入输出规范配置
-│  ├─Task           		  异步Task方法模块
-│  ├─Utility           		进程池
-│  ├─Validate           	自定义验证层模块
+│  ├─Model                tp orm 
+│  ├─Service              服务层
+│  ├─Sock                 websocket 输入输出规范配置
+│  ├─Task                 异步Task方法模块
+│  ├─Utility              进程池
+│  ├─Validate             自定义验证层模块
 │  └─WebsocketController  Websocket Api 控制器目录
 ...
 (其他为 easyswoole 框架自带)
