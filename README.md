@@ -1,8 +1,11 @@
 # Ltalk
 
-### 前端页面正在加急开发中...
-- 项目地址：https://github.com/LTalkTeam/LTalkHTML
-- 在线预览：http://118.24.77.25/LTalkHTML/login.html （群组所有功能正在开发中，暂不可用）
+
+- 前端项目地址：https://github.com/LTalkTeam/LTalkHTML
+
+- 在线预览：http://118.24.77.25/LTalkHTML/login.html
+
+- 联系方式：octopus.zy.cn@gmail.com
 
 
 ### 本项目v1版本有以下功能：
@@ -26,11 +29,7 @@
 - 接收离线消息
 - 查看历史聊天记录
 
-## 标准与规范
-1. 本项目采用api接口形式，接收与返回数据
-2. 尽可能遵循 restful 规范标准
-3. 前后端分离
-4. 自定义全局异常处理类与验证层，保证输入输出的规范性
+
 
 ## 目录结构
 
@@ -38,18 +37,18 @@
 
 ~~~
 LTalk  WEB部署目录
-├─app          				    应用目录
+├─app                     应用目录
 │  ├─Exception            自定义异常
 │  ├─HttpController       HttpApi 控制器目录
-│  │  ├─Common.php      	公共方法
-│  │  └─Router.php      	自定义路由
+│  │  ├─Common.php        公共方法
+│  │  └─Router.php        自定义路由
 │  │
-│  ├─Model        			  tp orm 
-│  ├─Service         		  服务层
-│  ├─Sock           		  websocket 输入输出规范配置
-│  ├─Task           		  异步Task方法模块
-│  ├─Utility           		进程池
-│  ├─Validate           	自定义验证层模块
+│  ├─Model                tp orm 
+│  ├─Service              服务层
+│  ├─Sock                 websocket 输入输出规范配置
+│  ├─Task                 异步Task方法模块
+│  ├─Utility              进程池
+│  ├─Validate             自定义验证层模块
 │  └─WebsocketController  Websocket Api 控制器目录
 ...
 (其他为 easyswoole 框架自带)
