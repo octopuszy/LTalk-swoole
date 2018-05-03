@@ -1,60 +1,36 @@
-18-04-16 19:45:19:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[30] message:[Undefined index: umber]
-18-04-16 19:45:19:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[32] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
+18-04-20 20:55:19:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php] line[109] message:[#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(79): App\WebsocketController\Chat->groupChat()
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(26): EasySwoole\Core\Socket\AbstractInterface\Controller->__hook('groupChat')
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/WebSocketController.php(21): EasySwoole\Core\Socket\AbstractInterface\Controller->__construct(Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php(101): EasySwoole\Core\Socket\AbstractInterface\WebSocketController->__construct(Object(EasySwoole\Core\Socket\Client\WebSocket), Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(127): EasySwoole\Core\Socket\Dispatcher->dispatch(2, '{"controller":"...', Object(Swoole\WebSocket\Frame))
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(56): EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), Object(Swoole\WebSocket\Frame))
+#6 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#7 {main}]
+18-04-20 20:55:24:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php] line[109] message:[#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(79): App\WebsocketController\Chat->groupChat()
+#1 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/Controller.php(26): EasySwoole\Core\Socket\AbstractInterface\Controller->__hook('groupChat')
+#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/AbstractInterface/WebSocketController.php(21): EasySwoole\Core\Socket\AbstractInterface\Controller->__construct(Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Socket/Dispatcher.php(101): EasySwoole\Core\Socket\AbstractInterface\WebSocketController->__construct(Object(EasySwoole\Core\Socket\Client\WebSocket), Object(EasySwoole\Core\Socket\Common\CommandBean), Object(EasySwoole\Core\Component\Spl\SplStream))
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(127): EasySwoole\Core\Socket\Dispatcher->dispatch(2, '{"controller":"...', Object(Swoole\WebSocket\Frame))
+#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(56): EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), Object(Swoole\WebSocket\Frame))
+#6 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
+#7 {main}]
+18-04-20 20:59:41:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[32] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
 Stack trace:
 #0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoTask.php(33): App\Service\FriendService::friendInfo(Array)
-#4 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::FriendOk(Array)
-#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#6 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
-#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
-#8 /home/www/LTalk/vendor/]
-18-04-16 19:48:00:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
-18-04-16 19:48:23:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
-18-04-16 19:48:26:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
-18-04-16 19:50:30:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[30] message:[Undefined index: umber]
-18-04-16 19:50:30:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[32] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
-Stack trace:
-#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoTask.php(33): App\Service\FriendService::friendInfo(Array)
-#4 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::FriendOk(Array)
-#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#6 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
-#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
-#8 /home/www/LTalk/vendor/]
-18-04-16 19:52:57:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[32] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
-Stack trace:
-#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoTask.php(33): App\Service\FriendService::friendInfo(Array)
-#4 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::FriendOk(Array)
-#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#6 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
-#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
-#8 /home/www/LTalk/vendor/]
-18-04-16 20:02:10:Error at file[/home/www/LTalk/App/Service/RedisPoolService.php] line[32] message:[Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
-Stack trace:
-#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoTask.php(33): App\Service\FriendService::friendInfo(Array)
-#4 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::FriendOk(Array)
-#5 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
-#6 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
-#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
-#8 /home/www/LTalk/vendor/]
-18-04-16 20:30:21:Error at file[/home/www/LTalk/App/Task/Task.php] line[25] message:[Uncaught Error: Call to undefined method App\Task\DoTask::FriendOk() in /home/www/LTalk/App/Task/Task.php:25
-Stack trace:
-#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 1, 0)
-#1 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 1, 0, Object(App\Task\Task))
-#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
-#3 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Component\Invoker::callUserFuncArray(Object(Closure), Array)
-#4 [internal function]: EasySwoole\Core\Swoole\ServerManager->EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 1, 0, Object(App\Task\Task))
-#5 {main}
-  thrown]
-18-04-16 20:46:10:Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[27] message:[Undefined index: number]
-18-04-16 20:46:20:Error at file[/home/www/LTalk/App/Task/DoTask.php] line[19] message:[Swoole\WebSocket\Server::push(): fd[0] is invalid.]
+#1 /home/www/LTalk/App/Service/UserCacheService.php(158): App\Service\RedisPoolService::getRedisPool()
+#2 /home/www/LTalk/App/Task/DoTask.php(58): App\Service\UserCacheService::getGroupFdsLen('44227700')
+#3 /home/www/LTalk/App/Task/Task.php(25): App\Task\DoTask::sendGroupMsg(Array)
+#4 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 0, 0)
+#5 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 0, 0, Object(App\Task\Task))
+#6 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Invoker.php(58): call_user_func_array(Object(Closure), Array)
+#7 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/ServerManager.php(137): EasySwoole\Core\Componen]
+18-04-20 21:06:05:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::lIndex() expects exactly 2 parameters, 1 given]
+18-04-20 21:08:04:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::lIndex() expects exactly 2 parameters, 1 given]
+18-04-20 21:09:33:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::lIndex() expects exactly 2 parameters, 1 given]
+18-04-20 21:10:57:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::lIndex() expects exactly 2 parameters, 1 given]
+18-04-20 21:11:56:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::lIndex() expects exactly 2 parameters, 1 given]
+18-04-20 21:19:56:Error at file[/home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/Coroutine/Client/Redis.php] line[62] message:[Swoole\Coroutine\Redis::lIndex() expects exactly 2 parameters, 1 given]
+18-04-21 10:23:30:Error at file[/home/www/LTalk/App/Service/Common.php] line[35] message:[Undefined index: HTTP_X_REAL_IP]
+18-04-21 10:23:30:Error at file[/home/www/LTalk/App/Service/Common.php] line[47] message:[Undefined index: REMOTE_ADDR]
+18-04-21 10:28:34:Error at file[/home/www/LTalk/App/Service/Common.php] line[39] message:[Undefined index: REMOTE_ADDR]
+18-04-21 10:42:54:Error at file[/home/www/LTalk/App/Service/Common.php] line[47] message:[Undefined index: REMOTE_ADDR]

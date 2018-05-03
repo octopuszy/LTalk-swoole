@@ -1,34 +1,161 @@
-[2018-04-16 19:45:19 ^27651.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
+[2018-04-20 20:59:41 ^11190.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
 Stack trace:
 #0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoT
-[2018-04-16 19:45:19 $27648.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
-[2018-04-16 19:50:30 ^28523.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
+#1 /home/www/LTalk/App/Service/UserCacheService.php(158): App\Service\RedisPoolService::getRedisPool()
+#2 /home/www/LTalk/App/Task/DoTask.php(58): App\Service\UserCacheService::getGroupFdsLen('44227700')
+#3 /home/www/LTalk/App/Task/Task
+[2018-04-20 20:59:41 $11188.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+[2018-04-22 00:15:07 *12912.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 00:15:07 *12911.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 00:15:07 $12906.0]	WARNING	swSignal_callback: signal[1] callback is null.
+[2018-04-22 00:15:07 $12906.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
+[2018-04-22 00:15:07 $12906.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
+[2018-04-22 00:15:07 $12906.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
+[2018-04-22 00:15:07 $12906.0]	WARNING	swManager_check_exit_status: worker#7 abnormal exit, status=0, signal=1
+[2018-04-22 00:15:07 #12905.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 09:28:35 *12912.1]	NOTICE	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-04-22 13:48:05 *22318.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 13:48:05 *22317.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 13:48:05 $22313.0]	WARNING	swSignal_callback: signal[1] callback is null.
+[2018-04-22 13:48:05 $22313.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
+[2018-04-22 13:48:05 $22313.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
+[2018-04-22 13:48:05 $22313.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
+[2018-04-22 13:48:05 $22313.0]	WARNING	swManager_check_exit_status: worker#7 abnormal exit, status=0, signal=1
+[2018-04-22 13:48:05 #22312.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 14:08:34 #22312.1]	NOTICE	Server is shutdown now.
+[2018-04-22 20:18:15 *9232.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 20:18:15 *9231.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-22 20:18:15 $9227.0]	WARNING	swSignal_callback: signal[1] callback is null.
+[2018-04-22 20:18:15 $9227.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
+[2018-04-22 20:18:15 $9227.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
+[2018-04-22 20:18:15 $9227.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
+[2018-04-22 20:18:15 $9227.0]	WARNING	swManager_check_exit_status: worker#7 abnormal exit, status=0, signal=1
+[2018-04-22 20:18:15 #9226.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-23 19:13:38 #9226.1]	NOTICE	Server is shutdown now.
+[2018-04-23 23:27:15 *18772.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-23 23:27:15 *18771.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-23 23:27:15 $18767.0]	WARNING	swSignal_callback: signal[1] callback is null.
+[2018-04-23 23:27:15 $18767.0]	WARNING	swManager_check_exit_status: worker#4 abnormal exit, status=0, signal=1
+[2018-04-23 23:27:15 $18767.0]	WARNING	swManager_check_exit_status: worker#5 abnormal exit, status=0, signal=1
+[2018-04-23 23:27:15 $18767.0]	WARNING	swManager_check_exit_status: worker#6 abnormal exit, status=0, signal=1
+[2018-04-23 23:27:15 $18767.0]	WARNING	swManager_check_exit_status: worker#7 abnormal exit, status=0, signal=1
+[2018-04-23 23:27:15 #18766.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-04-24 20:24:42 #18766.1]	NOTICE	Server is shutdown now.
+loading data from file at process easySwoole_Cache_Process_0
+loading data from file success at process easySwoole_Cache_Process_0
+loading data from file at process easySwoole_Cache_Process_1
+loading data from file success at process easySwoole_Cache_Process_1
+loading data from file at process easySwoole_Cache_Process_2
+loading data from file success at process easySwoole_Cache_Process_2
+[2018-04-29 08:53:27 *1234.0]	NOTICE	swFactoryProcess_finish (ERROR 1004): send 189 byte failed, because connection[fd=8] is closed.
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=1234]
+[2018-04-29 08:53:38 *1234.0]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+[2018-04-29 15:41:03 #1229.1]	NOTICE	Server is shutdown now.
+loading data from file at process easySwoole_Cache_Process_0
+loading data from file at process easySwoole_Cache_Process_1
+loading data from file at process easySwoole_Cache_Process_2
+loading data from file success at process easySwoole_Cache_Process_0
+loading data from file success at process easySwoole_Cache_Process_1
+loading data from file success at process easySwoole_Cache_Process_2
+[2018-04-29 15:49:35 #25760.1]	NOTICE	Server is shutdown now.
+loading data from file at process easySwoole_Cache_Process_0
+loading data from file success at process easySwoole_Cache_Process_0
+loading data from file at process easySwoole_Cache_Process_1
+loading data from file success at process easySwoole_Cache_Process_1
+loading data from file at process easySwoole_Cache_Process_2
+loading data from file success at process easySwoole_Cache_Process_2
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=26203]
+[2018-04-30 09:00:51 *26203.1]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=26202]
+[2018-04-30 09:00:52 *26202.0]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+[2018-04-30 12:26:12 #26197.1]	NOTICE	Server is shutdown now.
+loading data from file at process easySwoole_Cache_Process_0
+loading data from file success at process easySwoole_Cache_Process_0
+loading data from file at process easySwoole_Cache_Process_1
+loading data from file success at process easySwoole_Cache_Process_1
+loading data from file at process easySwoole_Cache_Process_2
+loading data from file success at process easySwoole_Cache_Process_2
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=3340]
+[2018-05-01 10:15:00 *3340.0]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=3341]
+[2018-05-01 10:15:01 *3341.1]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[735] message:[PDOStatement::execute(): send of 36 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[735] message:[Error while sending STMT_EXECUTE packet. PID=5988]
+PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php on line 735
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php on line 735
+PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php on line 78
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php on line 78
+[2018-05-01 10:16:14 ^5988.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php on line 78.
+[2018-05-01 10:16:15 $3336.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[735] message:[PDOStatement::execute(): send of 39 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[735] message:[Error while sending STMT_EXECUTE packet. PID=5989]
+PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php on line 735
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php on line 735
+PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php on line 78
+
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php on line 78
+[2018-05-01 10:16:23 ^5989.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Core.php on line 78.
+[2018-05-01 10:16:23 $3336.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=3340]
+[2018-05-02 09:21:29 *3340.0]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=3341]
+[2018-05-02 09:21:30 *3341.1]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[43] message:[Undefined index: number]
+Error at file[/home/www/LTalk/App/Sock/Parser/OnClose.php] line[46] message:[Undefined index: number]
+PHP Fatal error:  Uncaught think\Exception: where express error:NULL in /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php:322
 Stack trace:
-#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoT
-[2018-04-16 19:50:30 $28520.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
-[2018-04-16 19:52:57 ^28697.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
+#0 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(281): think\db\Builder->buildWhere(Object(think\db\Query), Array)
+#1 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(990): think\db\Builder->parseWhere(Object(think\db\Query), Array)
+#2 /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php(894): think\db\Builder->select(Object(think\db\Query))
+#3 /home/www/LTalk/vendor/topthink/think-orm/src/db/Query.php(2380): think\db\Connection->select(Object(think\db\Query))
+#4 /home/www/LTalk/App/Model/GroupMember.php(31): think\db\Query->select()
+#5 /home/www/LTalk/App/Sock/Parser/OnClose.php(46): App\Model\GroupMember::getGroups(Array)
+#6 /home/www/LTalk/App/Sock/Parser/OnClose.php(31): App\Sock\Parser\OnClose->delCache(Array)
+#7 /home/www/LTalk/EasySwooleEvent.php(64): App\Sock\Parser\OnClose->close()
+#8 /home/www/LTalk/vendor/easyswoole/easyswoole/src/ in /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php on line 322
+
+Fatal error: Uncaught think\Exception: where express error:NULL in /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php:322
 Stack trace:
-#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoT
-[2018-04-16 19:52:57 $28694.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
-[2018-04-16 20:02:10 ^29201.3]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to a member function getObj() on null in /home/www/LTalk/App/Service/RedisPoolService.php:32
+#0 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(281): think\db\Builder->buildWhere(Object(think\db\Query), Array)
+#1 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(990): think\db\Builder->parseWhere(Object(think\db\Query), Array)
+#2 /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php(894): think\db\Builder->select(Object(think\db\Query))
+#3 /home/www/LTalk/vendor/topthink/think-orm/src/db/Query.php(2380): think\db\Connection->select(Object(think\db\Query))
+#4 /home/www/LTalk/App/Model/GroupMember.php(31): think\db\Query->select()
+#5 /home/www/LTalk/App/Sock/Parser/OnClose.php(46): App\Model\GroupMember::getGroups(Array)
+#6 /home/www/LTalk/App/Sock/Parser/OnClose.php(31): App\Sock\Parser\OnClose->delCache(Array)
+#7 /home/www/LTalk/EasySwooleEvent.php(64): App\Sock\Parser\OnClose->close()
+#8 /home/www/LTalk/vendor/easyswoole/easyswoole/src/ in /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php on line 322
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php] line[322] message:[Uncaught think\Exception: where express error:NULL in /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php:322
 Stack trace:
-#0 /home/www/LTalk/App/Service/RedisPoolService.php(24): App\Service\RedisPoolService->__construct()
-#1 /home/www/LTalk/App/Service/UserCacheService.php(82): App\Service\RedisPoolService::getRedisPool()
-#2 /home/www/LTalk/App/Service/FriendService.php(29): App\Service\UserCacheService::getFdByNum(113314)
-#3 /home/www/LTalk/App/Task/DoT
-[2018-04-16 20:02:10 $29198.0]	WARNING	swManager_check_exit_status: worker#3 abnormal exit, status=255, signal=0
-[2018-04-16 20:30:21 ^31111.2]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Error: Call to undefined method App\Task\DoTask::FriendOk() in /home/www/LTalk/App/Task/Task.php:25
+#0 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(281): think\db\Builder->buildWhere(Object(think\db\Query), Array)
+#1 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(990): think\db\Builder->parseWhere(Object(think\db\Query), Array)
+#2 /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php(894): think\db\Builder->select(Object(think\db\Query))
+#3 /home/www/LTalk/vendor/topthink/think-orm/src/db/Query.php(2380): think\db\Connection->select(Object(think\db\Query))
+#4 /home/www/LTalk/App/Model/GroupMember.php(31): think\db\Query->select()
+#5 /home/www/LTalk/App/Sock/Parser/OnClose.php(46): App\Model\GroupMember::getGroups(Array)
+#6 /home/www/LTalk/App/Sock/Parser/OnClose.php(31): App\Sock\Parser\OnClose->delCache(Array)
+#7 /home/www/LTalk/EasySwooleEvent.php(64): App\Sock\Parser\OnClose->close()
+#8 /home/www/LTalk/vendor/easyswoole/easyswoole/src/]
+[2018-05-02 14:14:53 *3340.0]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught think\Exception: where express error:NULL in /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php:322
 Stack trace:
-#0 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Swoole/EventHelper.php(65): App\Task\Task->run(Array, 1, 0)
-#1 [internal function]: EasySwoole\Core\Swoole\EventHelper::EasySwoole\Core\Swoole\{closure}(Object(Swoole\WebSocket\Server), 1, 0, Object(App\Task\Task))
-#2 /home/www/LTalk/vendor/easyswoole/easyswoole/src/Core/Component/Inv
-[2018-04-16 20:30:21 $31109.0]	WARNING	swManager_check_exit_status: worker#2 abnormal exit, status=255, signal=0
+#0 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(281): think\db\Builder->buildWhere(Object(think\db\Query), Array)
+#1 /home/www/LTalk/vendor/topthink/think-orm/src/db/Builder.php(990): think\db\Builder->parseWhere(Object(think\db\Query), Array)
+#2 /home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php(894):
+[2018-05-02 14:14:54 $3336.0]	WARNING	swManager_check_exit_status: worker#0 abnormal exit, status=255, signal=0
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=3341]
+[2018-05-03 10:31:53 *3341.1]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[think\db\Connection::free(): send of 9 bytes failed with errno=32 Broken pipe]
+Error at file[/home/www/LTalk/vendor/topthink/think-orm/src/db/Connection.php] line[522] message:[Error while sending STMT_CLOSE packet. PID=32483]
+[2018-05-03 10:33:32 *32483.0]	WARNING	swSignalfd_onSignal: signal[13] callback is null.
+[2018-05-03 19:42:17 #3335.1]	NOTICE	Server is shutdown now.

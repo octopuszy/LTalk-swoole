@@ -32,6 +32,15 @@ class Friend extends BaseWs
             $this->response()->write(json_encode($to_user));
             return;
         }
+        // 不可添加自己好友
+        if($user['user']['number']==$to_number){
+            $err = (new FriendException([
+                'msg' => '不可添加自己为好友',
+                'errorCode' => 40006
+            ]))->getMsg();
+            $this->response()->write(json_encode($err));
+            return;
+        }
 
         // 查二者是否已经是好友
         $isFriend = FriendService::checkIsFriend($user['user']['id'], $to_user['user']['id']);
