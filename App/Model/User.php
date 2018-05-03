@@ -16,6 +16,9 @@ class User extends Model
     protected $hidden = ['created_time'];
 
     public function getLastLoginAttr($value, $data){
+        if(empty($value)){
+            return '-';
+        }
         return date('Y-m-d H:i:s',$value);
     }
 
