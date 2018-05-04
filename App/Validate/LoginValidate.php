@@ -25,5 +25,4 @@ class LoginValidate extends BaseValidate
             ->withRule(Validate::MAX_LEN,16);
         $this->rules = $rule;
     }
-
 }

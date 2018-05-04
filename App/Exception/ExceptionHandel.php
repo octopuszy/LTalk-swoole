@@ -41,7 +41,6 @@ class ExceptionHandel implements ExceptionHandlerInterface
             }
         }
         $this->returnJson($response);
-
     }
 
     private function recordErrorLog(\Throwable $exception){

@@ -65,17 +65,6 @@ Class EasySwooleEvent implements EventInterface
         });
 
         ProcessManager::getInstance()->addProcess('SendStatistics', SendStatistics::class);
-
-        // 向所有 websocket fd 发送当前在线人数
-        $register->add($register::onWorkerStart, function (\swoole_server $server, $workerId) {
-            # 获取在线人数，启动定时器，每两秒发一次
-            if ($workerId == 0) {
-                Timer::loop(2000, function () {
-                    ProcessManager::getInstance()->writeByProcessName('SendStatistics', 'send');  # 向自定义进程发消息
-                });
-            }
-        });
-
     }
 
     static public function onRequest(Request $request, Response $response): void
