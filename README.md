@@ -206,5 +206,3 @@ public function sendReq(){
 
 ## 开源许可协议
 LGPL许可协议，允许免费试用与二次开源。
-
-## 部署
