@@ -201,8 +201,42 @@ public function sendReq(){
 
 ## 部署
 
+### 后端
+
+- clone 相关分支代码
+- 将 LTalk.sql 文件导入数据库
+- 修改 Config.php
+```
+'MAIN_SERVER'=>[
+    'HOST'=>'0.0.0.0',              
+    'PORT'=>9502,                   // 修改端口号   
+    'SETTING'=>[
+        'task_worker_num' => 2,     // 异步任务进程数，通常与worker_num保持一致
+        'task_max_request'=>10,
+        'max_request'=>2500,        
+        'worker_num'=>2             
+    ],
+],
+
+'MYSQL' =>[...]                     // 配置 mysql 相关主机名与端口号
+'REDIS' =>[...]                     // 配置 redis 主机名与端口号
+'database' =>[...]                  // 本项目用到 think-orm 所以需要在这里进行mysql相关配置
+```
+- 在应用根目录下执行 php easyswoole start 即可启动，等待客户端连接
+- php easyswoole start --d 可以以守护进程方式启动
+- php easyswoole stop 关闭服务器
+
+
+### 前端
+
+- clone git@github.com:LTalkTeam/LTalkHTML.git
+- 修改 src/js/config.js，将 var ajaxUrl = 'http://118.24.77.25:9502'; 设置为自己的域名及其端口号
+- 打开 login.html进行注册与访问
+
+
 后端： clone 相关分支代码，在应用根目录下执行 php easyswoole start 即可，若要修改相关配置，则在 Config.php 中进行修改。
 前端： clone git@github.com:LTalkTeam/LTalkHTML.git 修改 src/js/config.js 中的域名即端口号即可配置完成，，打开 login.html进行访问。
 
+
 ## 开源许可协议
-LGPL许可协议，允许免费试用与二次开源。
+apache许可协议，允许免费试用与二次开源。
