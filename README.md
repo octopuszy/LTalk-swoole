@@ -205,7 +205,7 @@ public function sendReq(){
 ### 后端
 
 - clone 相关分支代码
-- 将 LTalk.sql 文件导入数据库
+- 创建数据库LTalk（或其他名，注意与配置文件保持一致），将 LTalk.sql 文件导入数据库
 - 修改 Config.php
 ```
 'MAIN_SERVER'=>[
@@ -233,10 +233,6 @@ public function sendReq(){
 - clone git@github.com:LTalkTeam/LTalkHTML.git
 - 修改 src/js/config.js，将 var ajaxUrl = 'http://118.24.77.25:9502'; 设置为自己的域名及其端口号
 - 打开 login.html进行注册与访问
-
-
-后端： clone 相关分支代码，在应用根目录下执行 php easyswoole start 即可，若要修改相关配置，则在 Config.php 中进行修改。
-前端： clone git@github.com:LTalkTeam/LTalkHTML.git 修改 src/js/config.js 中的域名即端口号即可配置完成，，打开 login.html进行访问。
 
 
 ## 开源许可协议
