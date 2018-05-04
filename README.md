@@ -63,7 +63,7 @@ LTalk  WEB部署目录
 
 ## 实现原理
 
-本项目可分为两大类，登录与注册用 Http 基础应用实现，采用 api 主聊天页面的所有功能都通过 easyswoole 的 WebSocket 应用模块来实现。由于
+本项目可分为两大类，登录与注册用 Http 基础应用实现，主聊天页面的所有功能都通过 easyswoole 的 WebSocket 应用模块来实现。由于
 EasySwoole 专为api而生，本项目不论是基于 http 还是websocket的应用功能，都是采用 api 接口形式请求与返回。
 
 ### Http 基础应用的关键代码分析
