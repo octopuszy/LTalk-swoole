@@ -68,8 +68,9 @@ EasySwoole 专为api而生，本项目不论是基于 http 还是websocket的应
 
 ### Http 基础应用的关键代码分析
 
+以登录模块为例
 ```
-// HttpController/Api/Login.pho
+// HttpController/Api/Login.php
 
 public function login(){
     (new LoginValidate())->goCheck($this->request());       // 自定义验证类
