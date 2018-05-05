@@ -203,7 +203,8 @@ public function sendReq(){
 
 ### 后端
 
-- clone 相关分支代码
+- git clone -b v1.0 git@github.com:octopuszy/LTalk-swoole.git
+- 执行 composer update
 - 创建数据库LTalk（或其他名，注意与配置文件保持一致），将 LTalk.sql 文件导入数据库
 - 修改 Config.php
 ```
@@ -242,8 +243,7 @@ public function sendReq(){
     'hostport' => '3306',
 ]
 ```
-- 在应用根目录下执行 php easyswoole start 即可启动，等待客户端连接
-- php easyswoole start --d 可以以守护进程方式启动
+- 在应用根目录下执行 php easyswoole start 即可启动，等待客户端连接（php easyswoole start --d 可以以守护进程方式启动）
 - php easyswoole stop 关闭服务器
 
 
