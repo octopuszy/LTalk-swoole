@@ -1,8 +1,9 @@
-- 前端项目地址：https://github.com/LTalkTeam/LTalkHTML
+在线预览：http://118.24.77.25/LTalkHTML/login.html
 
-- 在线预览：http://118.24.77.25/LTalkHTML/login.html
+前端项目地址：https://github.com/LTalkTeam/LTalkHTML
 
-- 联系方式：octopus.zy.cn@gmail.com
+联系方式：octopus.zy.cn@gmail.com
+
 
 # Ltalk
 本项目是一个基于easyswoole框架实现的网页版在线聊天室，前端界面参考微信的一些样式与配色，主要有好友聊天，群组聊天，世界聊天三个功能板块，详细功能如下。
