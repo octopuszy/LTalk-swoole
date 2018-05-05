@@ -41,7 +41,7 @@ return [
     'MYSQL'=>[
         'HOST'=>'127.0.0.1',
         'USER'=>'root',
-        'PASSWORD'=>'123',
+        'PASSWORD'=>'',
         'DB_NAME'=>'LTalk'
     ],
 
@@ -69,7 +69,7 @@ return [
         // 用户名
         'username'        => 'root',
         // 密码
-        'password'        => '123',
+        'password'        => '',
         // 端口
         'hostport'        => '3306',
         // 数据库表前缀
