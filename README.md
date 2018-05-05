@@ -1,5 +1,3 @@
-# Ltalk
-
 
 - 前端项目地址：https://github.com/LTalkTeam/LTalkHTML
 
@@ -7,6 +5,8 @@
 
 - 联系方式：octopus.zy.cn@gmail.com
 
+# Ltalk
+本项目是一个基于easyswoole框架实现的网页版在线聊天室，前端界面参考微信的一些样式与配色，主要有好友聊天，群组聊天，世界聊天三个功能板块，详细功能如下。
 
 ### 本项目v1版本有以下功能：
 - [x] 登录 
@@ -219,9 +219,29 @@ public function sendReq(){
     ],
 ],
 
-'MYSQL' =>[...]                     // 配置 mysql 相关主机名与端口号
-'REDIS' =>[...]                     // 配置 redis 主机名与端口号
-'database' =>[...]                  // 本项目用到 think-orm 所以需要在这里进行mysql相关配置
+'MYSQL' =>[                         // 配置 mysql，改为自己的主机名，用户名以及密码
+    'HOST'=>'127.0.0.1',
+    'USER'=>'root',
+    'PASSWORD'=>'xxx',
+    'DB_NAME'=>'LTalk'
+],                     
+'REDIS' =>[                         
+    'host' => '127.0.0.1',          // redis主机地址
+    'port' => 6379,                 // 端口
+    'serialize' => false,           // 是否序列化php变量
+    'auth' => null,                 // 密码
+    'pool' => [
+        'min' => 5,                 // 连接池最小连接数
+        'max' => 100                // 连接池最大连接数
+    ],
+],                     
+'database' =>[                      // 本项目用到 think-orm 所以需要在这里进行mysql相关配置
+    'hostname' => '127.0.0.1',
+    'database' => 'LTalk',
+    'username' => 'root',
+    'password' => 'xxx',
+    'hostport' => '3306',
+]
 ```
 - 在应用根目录下执行 php easyswoole start 即可启动，等待客户端连接
 - php easyswoole start --d 可以以守护进程方式启动
