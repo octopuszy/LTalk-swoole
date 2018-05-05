@@ -52,9 +52,15 @@ class Mongo extends Query
     public function removeWhereField($field, $logic = 'and')
     {
         $logic = '$' . strtoupper($logic);
-        if (isset($this->options['where'][$logic][$field])) {
-            unset($this->options['where'][$logic][$field]);
+
+        if (isset($this->options['where'][$logic])) {
+            foreach ($this->options['where'][$logic] as $key => $val) {
+                if (is_array($val) && $val[0] == $field) {
+                    unset($this->options['where'][$logic][$key]);
+                }
+            }
         }
+
         return $this;
     }
 
@@ -283,13 +289,9 @@ class Mongo extends Query
      * @param integer      $step  增长值
      * @return $this
      */
-    public function inc($field, $step = 1)
+    public function inc($field, $step = 1, $op = 'inc')
     {
-        $fields = is_string($field) ? explode(',', $field) : $field;
-        foreach ($fields as $field) {
-            $this->data($field, ['$inc', $step]);
-        }
-        return $this;
+        return parent::inc($field, $step, strtolower('$' . $op));
     }
 
     /**
@@ -301,70 +303,7 @@ class Mongo extends Query
      */
     public function dec($field, $step = 1)
     {
-        $fields = is_string($field) ? explode(',', $field) : $field;
-        foreach ($fields as $field) {
-            $this->data($field, ['$inc', -1 * $step]);
-        }
-        return $this;
-    }
-
-    /**
-     * 分析查询表达式
-     * @access public
-     * @param string                $logic 查询逻辑    and or xor
-     * @param string|array|\Closure $field 查询字段
-     * @param mixed                 $op 查询表达式
-     * @param mixed                 $condition 查询条件
-     * @param array                 $param 查询参数
-     * @return $this
-     */
-    protected function parseWhereExp($logic, $field, $op, $condition, $param = [])
-    {
-        $logic = '$' . strtolower($logic);
-        if ($field instanceof \Closure) {
-            $where = is_string($op) ? [$op, $field] : $field;
-        } elseif (is_null($op) && is_null($condition)) {
-            if (is_array($field)) {
-                if (key($field) !== 0) {
-                    $where = [];
-                    foreach ($field as $key => $val) {
-                        $where[$key] = !is_scalar($val) ? $val : [$key, '=', $val];
-                    }
-                } else {
-                    // 数组批量查询
-                    $where = $field;
-                }
-
-                if (!empty($where)) {
-                    $this->options['where'][$logic] = isset($this->options['where'][$logic]) ? array_merge($this->options['where'][$logic], $where) : $where;
-                }
-
-                return $this;
-            } elseif ($field && is_string($field)) {
-                // 字符串查询
-                $where = [$field, 'null', ''];
-            }
-        } elseif (is_array($op)) {
-            $where = $param;
-        } elseif (in_array(strtolower($op), ['null', 'notnull', 'not null'])) {
-            // null查询
-            $where = [$field, $op, ''];
-        } elseif (is_null($condition)) {
-            // 字段相等查询
-            $where = [$field, '=', $op];
-        } else {
-            $where = [$field, $op, $condition, isset($param[2]) ? $param[2] : null];
-        }
-
-        if (!empty($where)) {
-            if (isset($this->options['where'][$logic][$field])) {
-                $this->options['where'][$logic][] = $where;
-            } else {
-                $this->options['where'][$logic][$field] = $where;
-            }
-        }
-
-        return $this;
+        return $this->inc($field, -1 * $step);
     }
 
     /**
@@ -519,7 +458,18 @@ class Mongo extends Query
      */
     public function field($field, $except = false, $tableName = '', $prefix = '', $alias = '')
     {
+        if (empty($field)) {
+            return $this;
+        } elseif ($field instanceof Expression) {
+            $this->options['field'][] = $field;
+            return $this;
+        }
+
         if (is_string($field)) {
+            if (preg_match('/[\<\'\"\(]/', $field)) {
+                return $this->fieldRaw($field);
+            }
+
             $field = array_map('trim', explode(',', $field));
         }
 
@@ -545,7 +495,7 @@ class Mongo extends Query
      */
     public function skip($skip)
     {
-        $this->options['skip'] = $skip;
+        $this->options['skip'] = intval($skip);
         return $this;
     }
 

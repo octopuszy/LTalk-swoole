@@ -14,7 +14,7 @@ use EasySwoole\Core\Socket\Common\CommandBean;
 
 class WebSock implements ParserInterface
 {
-    public function decode($raw, $client)
+    public static function decode($raw, $client)
     {
         $command = new CommandBean();
         $json = json_decode($raw,1);
@@ -25,7 +25,7 @@ class WebSock implements ParserInterface
         return $command;
     }
 
-    public function encode(string $raw, $client, $commandBean): ?string
+    public static function encode(string $raw, $client, $commandBean): ?string
     {
         /*
          * 注意，return ''与return null不一样，空字符串一样会回复给客户端，比如在服务端主动心跳测试的场景

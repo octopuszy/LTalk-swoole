@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8327da40a59eaf1a6db8be64509ba19",
+    "content-hash": "d6d119f64b5c59887f94f235b76e8501",
     "packages": [
         {
             "name": "dragonmantank/cron-expression",
@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/easy-swoole/easyswoole.git",
-                "reference": "9368689939055a4a3b18784be78e6379543e59b6"
+                "reference": "56a9e1610c91a021ea5fc770486a9510f9b5be1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/easy-swoole/easyswoole/9368689939055a4a3b18784be78e6379543e59b6.zip",
-                "reference": "9368689939055a4a3b18784be78e6379543e59b6",
+                "url": "https://files.phpcomposer.com/files/easy-swoole/easyswoole/56a9e1610c91a021ea5fc770486a9510f9b5be1f.zip",
+                "reference": "56a9e1610c91a021ea5fc770486a9510f9b5be1f",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                 "framework",
                 "swoole"
             ],
-            "time": "2018-04-12T05:18:21+00:00"
+            "time": "2018-05-04T02:55:35+00:00"
         },
         {
             "name": "easyswoole/swoole-ide-helper",
@@ -335,16 +335,16 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "ebc999ce5f14204c5150b9bd15f8f04e621409d8"
+                "reference": "af98553c84912459db3f636329567809d639a8f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-php56/ebc999ce5f14204c5150b9bd15f8f04e621409d8.zip",
-                "reference": "ebc999ce5f14204c5150b9bd15f8f04e621409d8",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-php56/af98553c84912459db3f636329567809d639a8f6.zip",
+                "reference": "af98553c84912459db3f636329567809d639a8f6",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +354,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.8-dev"
                 }
             },
             "autoload": {
@@ -387,20 +387,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30T19:27:44+00:00"
+            "time": "2018-04-26T10:06:28+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "e17c808ec4228026d4f5a8832afa19be85979563"
+                "reference": "1a5ad95d9436cbff3296034fe9f8d586dce3fb3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-util/e17c808ec4228026d4f5a8832afa19be85979563.zip",
-                "reference": "e17c808ec4228026d4f5a8832afa19be85979563",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-util/1a5ad95d9436cbff3296034fe9f8d586dce3fb3a.zip",
+                "reference": "1a5ad95d9436cbff3296034fe9f8d586dce3fb3a",
                 "shasum": ""
             },
             "require": {
@@ -409,7 +409,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.8-dev"
                 }
             },
             "autoload": {
@@ -439,20 +439,20 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2018-01-31T18:08:44+00:00"
+            "time": "2018-04-26T10:06:28+00:00"
         },
         {
             "name": "topthink/think-orm",
-            "version": "v1.2.4",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/think-orm.git",
-                "reference": "e6e4633a87012d84a056e6f86776fbe2b472f73f"
+                "reference": "8bdca98758b7d84f1f7313360fd08fa90223d719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/top-think/think-orm/e6e4633a87012d84a056e6f86776fbe2b472f73f.zip",
-                "reference": "e6e4633a87012d84a056e6f86776fbe2b472f73f",
+                "url": "https://files.phpcomposer.com/files/top-think/think-orm/8bdca98758b7d84f1f7313360fd08fa90223d719.zip",
+                "reference": "8bdca98758b7d84f1f7313360fd08fa90223d719",
                 "shasum": ""
             },
             "require": {
@@ -478,7 +478,7 @@
                 }
             ],
             "description": "think orm",
-            "time": "2018-02-05T05:52:41+00:00"
+            "time": "2018-01-19T04:05:26+00:00"
         }
     ],
     "packages-dev": [],

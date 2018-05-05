@@ -10,7 +10,7 @@ namespace App\Service;
 
 
 use App\Utility\RedisPool;
-use EasySwoole\Core\Swoole\Coroutine\PoolManager;
+use EasySwoole\Core\Component\Pool\PoolManager;
 
 class RedisPoolService
 {

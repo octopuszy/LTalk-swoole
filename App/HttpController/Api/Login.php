@@ -125,6 +125,7 @@ class Login extends Controller
             'last_login' => time()
         ];
         UserModel::updateUser($user['id'], $update);
+
         // 生成 token
         $token = Common::getRandChar(16);
 

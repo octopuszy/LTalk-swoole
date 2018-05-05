@@ -4,21 +4,17 @@ namespace EasySwoole;
 
 use App\Process\SendStatistics;
 use App\Sock\Parser\OnClose;
-use App\Sock\Parser\WebSock;
-use App\Task\Task;
 use App\Utility\RedisPool;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
 use EasySwoole\Core\Component\Di;
+use EasySwoole\Core\Component\Pool\PoolManager;
 use EasySwoole\Core\Component\SysConst;
-use \EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use \EasySwoole\Core\Swoole\EventHelper;
 use EasySwoole\Core\Swoole\Process\ProcessManager;
 use \EasySwoole\Core\Swoole\ServerManager;
 use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
 use \EasySwoole\Core\Http\Response;
-use EasySwoole\Core\Swoole\Task\TaskManager;
-use EasySwoole\Core\Swoole\Time\Timer;
 use think\Db;
 
 /**
@@ -53,11 +49,11 @@ Class EasySwooleEvent implements EventInterface
     static public function mainServerCreate(ServerManager $server, EventRegister $register): void
     {
         if (version_compare(phpversion('swoole'), '2.1.0', '>=')) {
-            PoolManager::getInstance()->addPool(RedisPool::class, 3, 10);
+            PoolManager::getInstance()->registerPool(RedisPool::class, 3, 10);
         }
 
         // 添加 onMessage 的处理方式
-        EventHelper::registerDefaultOnMessage($register, new WebSock());
+        EventHelper::registerDefaultOnMessage($register, "App\Sock\Parser\WebSock");
 
         // 监听 onclose 事件
         $register->add($register::onClose, function (\swoole_server $server, $fd, $reactorId ) {
