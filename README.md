@@ -203,7 +203,7 @@ public function sendReq(){
 
 ### 后端
 
-- clone 相关分支代码
+- git clone -b v1.0 git@github.com:octopuszy/LTalk-swoole.git
 - 创建数据库LTalk（或其他名，注意与配置文件保持一致），将 LTalk.sql 文件导入数据库
 - 修改 Config.php
 ```
@@ -249,7 +249,7 @@ public function sendReq(){
 
 ### 前端
 
-- clone git@github.com:LTalkTeam/LTalkHTML.git
+- git clone git@github.com:LTalkTeam/LTalkHTML.git
 - 修改 src/js/config.js，将 var ajaxUrl = 'http://118.24.77.25:9502'; 设置为自己的域名及其端口号
 - 打开 login.html进行注册与访问
 
