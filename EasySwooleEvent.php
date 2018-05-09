@@ -10,6 +10,7 @@ use EasySwoole\Core\Component\Di;
 use EasySwoole\Core\Component\SysConst;
 use \EasySwoole\Core\Swoole\EventHelper;
 use EasySwoole\Core\Swoole\Coroutine\PoolManager;
+use EasySwoole\Core\Swoole\Process\ProcessManager;
 use \EasySwoole\Core\Swoole\ServerManager;
 use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
