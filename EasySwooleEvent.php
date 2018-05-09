@@ -7,10 +7,9 @@ use App\Sock\Parser\OnClose;
 use App\Utility\RedisPool;
 use \EasySwoole\Core\AbstractInterface\EventInterface;
 use EasySwoole\Core\Component\Di;
-use EasySwoole\Core\Component\Pool\PoolManager;
 use EasySwoole\Core\Component\SysConst;
 use \EasySwoole\Core\Swoole\EventHelper;
-use EasySwoole\Core\Swoole\Process\ProcessManager;
+use EasySwoole\Core\Swoole\Coroutine\PoolManager;
 use \EasySwoole\Core\Swoole\ServerManager;
 use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
@@ -49,7 +48,7 @@ Class EasySwooleEvent implements EventInterface
     static public function mainServerCreate(ServerManager $server, EventRegister $register): void
     {
         if (version_compare(phpversion('swoole'), '2.1.0', '>=')) {
-            PoolManager::getInstance()->registerPool(RedisPool::class, 3, 10);
+            PoolManager::getInstance()->addPool(RedisPool::class, 3, 10);
         }
 
         // 添加 onMessage 的处理方式

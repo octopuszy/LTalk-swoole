@@ -8,11 +8,11 @@
 
 namespace App\Utility;
 use EasySwoole\Config;
-use EasySwoole\Core\Component\Pool\AbstractInterface\Pool;
-//use EasySwoole\Core\Swoole\Coroutine\AbstractInterface\CoroutinePool;
+//use EasySwoole\Core\Component\Pool\AbstractInterface\Pool;
+use EasySwoole\Core\Swoole\Coroutine\AbstractInterface\CoroutinePool;
 use EasySwoole\Core\Swoole\Coroutine\Client\Redis;
 
-class RedisPool extends Pool
+class RedisPool extends CoroutinePool
 {
     public function getObj($timeOut = 0.1):?Redis
     {
