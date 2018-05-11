@@ -1,3 +1,6 @@
+> 部署请下载 v1.0 版本，适配easyswooel的v2.0.2，dev 版本用来调试开发使用
+
+
 # Ltalk
 
 - 在线预览：http://118.24.77.25/LTalkHTML/login.html
@@ -6,7 +9,6 @@
 
 - 联系方式：octopus.zy.cn@gmail.com
 
-## 部署请下载 v1.x 版本，dev 版本用来调试开发使用
 
 ### 本项目v1版本有以下功能：
 - [x] 登录 
